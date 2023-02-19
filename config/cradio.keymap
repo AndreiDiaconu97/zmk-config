@@ -45,7 +45,21 @@
 //   acceleration-exponent=<2>;
 // };
 
-
+#define COMBO(NAME, TIMEOUT, KEYPOS, BINDINGS) \
+  combo_##NAME { \
+    timeout-ms = <TIMEOUT>; \
+    key-positions = <KEYPOS>; \
+    bindings = <BINDINGS>; \
+    slow-release; \
+  };
+#define COMBO_LAYERED(NAME, TIMEOUT, KEYPOS, BINDINGS, LAYERS) \
+  combo_##NAME { \
+    timeout-ms = <TIMEOUT>; \
+    key-positions = <KEYPOS>; \
+    bindings = <BINDINGS>; \
+    layers = <LAYERS>; \
+    slow-release; \
+  };
   /*                KEY POSITIONS
   ╭────────────────────╮ ╭────────────────────╮
   │  0   1   2   3   4 │ │  5   6   7   8   9 │
@@ -56,11 +70,26 @@
 / { 
   combos {
     compatible = "zmk,combos";
-    combo_gui {
-      timeout-ms = <30>;
-      key-positions = <10 30>;
-      bindings = <NK(LGUI)>;
-    };
+
+    // homerow mods
+    COMBO(gui, 30, 10 31, NK(LGUI))
+    COMBO(alt, 30, 11 31, NK(LALT))
+    COMBO(ctrl, 30, 12 31, NK(LCTRL))
+    COMBO(shift, 30, 13 31, NK(LSHIFT))
+
+    COMBO(gui_alt, 30, 10 11 31, NK(LG(LALT)))
+    COMBO(gui_ctrl, 30, 10 12 31, NK(LG(LCTRL)))
+    COMBO(gui_shift, 30, 10 13 31, NK(LG(LSHIFT)))
+    COMBO(alt_ctrl, 30, 11 12 31, NK(LA(LCTRL)))
+    COMBO(alt_shift, 30, 11 13 31, NK(LA(LSHIFT)))
+    COMBO(ctrl_shift, 30, 12 13 31, NK(LC(LSHIFT)))
+
+    COMBO(gui_alt_ctrl, 30, 10 11 12 31, NK(LG(LA(LCTRL))))
+    COMBO(gui_alt_shift, 30, 10 11 13 31, NK(LG(LA(LSHIFT))))
+    COMBO(gui_ctrl_shift, 30, 10 12 13 31, NK(LG(LC(LSHIFT))))
+    COMBO(alt_ctrl_shift, 30, 11 12 13 31, NK(LA(LC(LSHIFT))))
+
+    COMBO(gui_alt_ctrl_shift, 30, 10 11 12 13 31, NK(LG(LA(LC(LSHIFT)))))
 
   //   combo_game {
   //     timeout-ms = <30>;
@@ -178,7 +207,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMICOLON
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       XXX           &kp SPACE         &skq LSHIFT   &mo SYM_NUM    // REVIEW: maybe I don't need sticky SHIFT
+                                                       &mo NAV       &kp SPACE         &skq LSHIFT   &mo SYM_NUM    // REVIEW: maybe I don't need sticky SHIFT
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
