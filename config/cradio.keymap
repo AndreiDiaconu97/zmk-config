@@ -1,5 +1,4 @@
 /* TODO
-- SPACE and SHIFT on same thumb a bad idea? Swap SHIFT with ALT?
 - LAYER SWITCHING IDEAS:
     - HOLD alpha keys (slower, but more keys available)
     - press COMBOs of alphas (much faster, but have to avoid common sequences)
@@ -7,7 +6,8 @@
     --> can release the combo but holding the thumb key to keep the whole combo held and even switch layers in the meantime
 - Mod-tap with no delay and retro-tap vs &lt? --> could not use &lt since is laggier
 - put square and curly brackets on the same buttons since pressing them at the same time does not work
-- try homerow mods with opposite hands on main layer (or even all layers): problem is that I can still misfire with rolls across hands
+- try homerow mods with opposite hands on main layer (or even all layers): viable with bottom row modsn
+- put as much functionality on left hand so that I can use mouse without much switching
 */
 
 #include <behaviors.dtsi>
@@ -27,7 +27,7 @@
 
 // Layers
 #define BASE 0
-#define QUERTY 1
+#define QWERTY 1
 #define NAV 2
 #define SYM_NUM 3
 #define FUNCT 4
@@ -35,8 +35,8 @@
 #define GAME 6
 
 // Home row mods
-#define HRML(k1,k2) &hm LALT k1 &hm LGUI k2
-#define HRMR(k1,k2) &hm RGUI k1 &hm RALT k2
+#define HRML(k1,k2,k3,k4) &hml LGUI k1 &hml LALT k2 &hml LCTRL k3 &hml LSHIFT k4
+#define HRMR(k1,k2,k3,k4) &hmr LSHIFT k1 &hmr LCTRL k2 &hmr LALT k3 &hmr LGUI k4
 
 #define NK(key) &nk key key
 
@@ -60,6 +60,10 @@
     layers = <LAYERS>; \
     slow-release; \
   };
+
+#define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 
+#define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
+#define THUMBS 30 31 32 33
   /*                KEY POSITIONS
   ╭────────────────────╮ ╭────────────────────╮
   │  0   1   2   3   4 │ │  5   6   7   8   9 │
@@ -72,24 +76,24 @@
     compatible = "zmk,combos";
 
     // homerow mods
-    COMBO(gui, 30, 10 31, NK(LGUI))
-    COMBO(alt, 30, 11 31, NK(LALT))
-    COMBO(ctrl, 30, 12 31, NK(LCTRL))
-    COMBO(shift, 30, 13 31, NK(LSHIFT))
+    COMBO(gui, 30, 10 30, NK(LGUI))
+    COMBO(alt, 30, 11 30, NK(LALT))
+    COMBO(ctrl, 30, 12 30, NK(LCTRL))
+    COMBO(shift, 30, 13 30, NK(LSHIFT))
 
-    COMBO(gui_alt, 30, 10 11 31, NK(LG(LALT)))
-    COMBO(gui_ctrl, 30, 10 12 31, NK(LG(LCTRL)))
-    COMBO(gui_shift, 30, 10 13 31, NK(LG(LSHIFT)))
-    COMBO(alt_ctrl, 30, 11 12 31, NK(LA(LCTRL)))
-    COMBO(alt_shift, 30, 11 13 31, NK(LA(LSHIFT)))
-    COMBO(ctrl_shift, 30, 12 13 31, NK(LC(LSHIFT)))
+    COMBO(gui_alt, 30, 10 11 30, NK(LG(LALT)))
+    COMBO(gui_ctrl, 30, 10 12 30, NK(LG(LCTRL)))
+    COMBO(gui_shift, 30, 10 13 30, NK(LG(LSHIFT)))
+    COMBO(alt_ctrl, 30, 11 12 30, NK(LA(LCTRL)))
+    COMBO(alt_shift, 30, 11 13 30, NK(LA(LSHIFT)))
+    COMBO(ctrl_shift, 30, 12 13 30, NK(LC(LSHIFT)))
 
-    COMBO(gui_alt_ctrl, 30, 10 11 12 31, NK(LG(LA(LCTRL))))
-    COMBO(gui_alt_shift, 30, 10 11 13 31, NK(LG(LA(LSHIFT))))
-    COMBO(gui_ctrl_shift, 30, 10 12 13 31, NK(LG(LC(LSHIFT))))
-    COMBO(alt_ctrl_shift, 30, 11 12 13 31, NK(LA(LC(LSHIFT))))
+    COMBO(gui_alt_ctrl, 30, 10 11 12 30, NK(LG(LA(LCTRL))))
+    COMBO(gui_alt_shift, 30, 10 11 13 30, NK(LG(LA(LSHIFT))))
+    COMBO(gui_ctrl_shift, 30, 10 12 13 30, NK(LG(LC(LSHIFT))))
+    COMBO(alt_ctrl_shift, 30, 11 12 13 30, NK(LA(LC(LSHIFT))))
 
-    COMBO(gui_alt_ctrl_shift, 30, 10 11 12 13 31, NK(LG(LA(LC(LSHIFT)))))
+    COMBO(gui_alt_ctrl_shift, 20, 10 11 12 13 30, NK(LG(LA(LC(LSHIFT)))))
 
   //   combo_game {
   //     timeout-ms = <30>;
@@ -122,9 +126,43 @@
       label = "TAPDANCE_LAYERS";
       #binding-cells = <2>;
       tapping-term-ms = <150>;
-      quick_tap_ms = <0>;
+      quick-tap-ms = <0>;
       flavor = "tap-preferred";
       bindings = <&to>, <&kp>;
+    };
+
+    caps_morph: grave_escape {
+      compatible = "zmk,behavior-mod-morph";
+      label = "GRAVE_ESCAPE";
+      #binding-cells = <0>;
+      bindings = <&kp CAPS>, <&caps_word>;
+      mods = <(MOD_LCTL)>;
+    };
+
+    // Urob // "timer-less" homerow mods
+    hml: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS_LEFT";
+      #binding-cells = <2>;
+      tapping-term-ms = <280>;
+      // quick-tap-ms = <175>; // repeat on tap-into-hold
+      // global-quick-tap-ms = <150>;  // requires PR #1387
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <KEYS_R THUMBS>;
+      hold-trigger-on-release;  // requires PR #1423   
+    };
+    hmr: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS_RIGHT";
+      #binding-cells = <2>;
+      tapping-term-ms = <280>;
+      // quick-tap-ms = <175>; // repeat on tap-into-hold
+      // global-quick-tap-ms = <150>;  // requires PR #1387
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <KEYS_L THUMBS>;
+      hold-trigger-on-release;  // requires PR #1423   
     };
 
     // Ben Vallak
@@ -133,7 +171,7 @@
       label = "HOMEROW_MODS";
       #binding-cells = <2>;
       tapping-term-ms = <200>;
-      quick_tap_ms = <0>;
+      quick-tap-ms = <0>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&kp>;
     };
@@ -142,7 +180,7 @@
       label = "TAPDANCE";
       #binding-cells = <2>;
       tapping-term-ms = <150>;
-      quick_tap_ms = <0>;
+      quick-tap-ms = <0>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&kp>;
     };
@@ -153,7 +191,7 @@
       label = "STICKY_KEY_QUICK_RELEASE";
       #binding-cells = <1>;
       bindings = <&kp>;
-      release-after-ms = <2000>;
+      release-after-ms = <1000>;
       quick-release;
     };
 
@@ -229,27 +267,27 @@
     nav_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp ESC       &kp K_BACK    XXX           &kp K_FORWARD &kp INS           &kp K_CMENU   &kp HOME      &kp UP        &kp END       &kp CAPS
+             &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           &kp K_CMENU   &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             NK(LGUI)      NK(LALT)      NK(LCTRL)     NK(LSHIFT)    XXX               &kp DEL       &kp LEFT      &kp DOWN      &kp RIGHT     &kp BSPC
+             &kp BSPC      &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           XXX           XXX           XXX           XXX
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &kp K_REDO        &kp PSCRN     &kp PG_UP     &kp TAB       &kp PG_DN     &kp ENTER
+             &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           &kp ENTER
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       ___           ___               ___           ___
+                                                       ___           XXX               &key_repeat   ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
 
-    sym_num_layer {
+    sym_num_layer { // TODO: put numbers on homerow
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT       &kp EQUAL     &kp N7        &kp N8        &kp N9        &kp PLUS
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp SEMI      &kp COLON     &kp LBRC      &kp LPAR      &kp LBKT          &kp STAR      &kp N4        &kp N5        &kp N6        &kp MINUS
+             HRML(SEMI,    COLON,        LBRC,         LPAR)         &kp LBKT          &kp STAR      HRMR(N4,      N5 ,          N6,           MINUS)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp CARET     &kp AMPS      &kp RBRC      &kp RPAR      &kp RBKT          &kp N0        &kp N1        &kp N2        &kp N3        &kp SLASH
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       ___           ___               ___           ___
+                                                       ___           ___               XXX           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     }; 
@@ -259,11 +297,11 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp C_STOP    &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp C_BRI_UP      &kp F12       &kp F7        &kp F8        &kp F9        &tog BLT
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             NK(LGUI)      NK(LALT)      NK(LCTRL)     NK(LSHIFT)    &kp C_BRI_DN      &kp F11       &kp F4        &kp F5        &kp F6        &tog GAME
+             NK(LGUI)      NK(LALT)      NK(LCTRL)     NK(LSHIFT)    &kp C_BRI_DN      &kp F11       &kp F4        &kp F5        &kp F6        &kp BSPC
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             XXX           &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  XXX               &kp F10       &kp F1        &kp F2        &kp F3        &tog QUERTY
+             &tog QWERTY   &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  XXX               &kp F10       &kp F1        &kp F2        &kp F3        &tog GAME
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       ___           ___               ___           ___
+                                                       ___           XXX               XXX           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     }; 
@@ -287,9 +325,9 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &td TAB ESC   &kp Q         &kp W         &kp E         &kp R             XXX           XXX           XXX           XXX           XXX 
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LSHIFT    &kp A         &kp S         &kp D         &kp F             XXX           XXX           &key_repeat   &caps_word    &tog GAME 
+             &kp LSHIFT    &kp A         &kp S         &kp D         &kp F             XXX           XXX           XXX           XXX           XXX
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp LCTRL     &kp Z         &kp X         &kp C         &kp V             XXX           XXX           XXX           XXX           XXX
+             &kp LCTRL     &kp Z         &kp X         &kp C         &kp V             XXX           XXX           XXX           XXX           &tog GAME 
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        &kp LALT      &kp SPACE         XXX           XXX
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -423,8 +461,8 @@
 
   // HOLD-TAP //
     - tapping-term-ms              time to hold before triggering hold behaviour
-    - quick_tap_ms                 timer between quick-tap + hold to force hold on tap behaviour (The opposite of TAPPING_FORCE_HOLD in QMK)
-    -  - global-quick-tap          applies quick_tap_ms even if quick-tap is not the same key, useful for avoiding delays when fast typing on homerow mods
+    - quick-tap-ms                 timer between quick-tap + hold to force hold on tap behaviour (The opposite of TAPPING_FORCE_HOLD in QMK)
+    -  - global-quick-tap          applies quick-tap-ms even if quick-tap is not the same key, useful for avoiding delays when fast typing on homerow mods
     - retro-tap                    hold behaviour is applied immediately if pressing another key when pressing the first one?
     - hold-trigger-key-positions   keys in this list instantly apply the hold modifier if they are the first ones pressed after the key with hold-tap behaviour
     - flavor 
