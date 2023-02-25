@@ -33,6 +33,7 @@
 #define FUNCT 4
 #define BLT 5
 #define GAME 6
+#define ALL_EXCEPT_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT
 
 // Home row mods
 #define HRML(k1,k2,k3,k4) &hml LGUI k1 &hml LALT k2 &hml LCTRL k3 &hml LSHIFT k4
@@ -45,14 +46,7 @@
 //   acceleration-exponent=<2>;
 // };
 
-#define COMBO(NAME, TIMEOUT, KEYPOS, BINDINGS) \
-  combo_##NAME { \
-    timeout-ms = <TIMEOUT>; \
-    key-positions = <KEYPOS>; \
-    bindings = <BINDINGS>; \
-    slow-release; \
-  };
-#define COMBO_LAYERED(NAME, TIMEOUT, KEYPOS, BINDINGS, LAYERS) \
+#define COMBO(NAME, TIMEOUT, KEYPOS, BINDINGS, LAYERS) \
   combo_##NAME { \
     timeout-ms = <TIMEOUT>; \
     key-positions = <KEYPOS>; \
@@ -76,24 +70,27 @@
     compatible = "zmk,combos";
 
     // homerow mods
-    COMBO(gui, 30, 10 30, NK(LGUI))
-    COMBO(alt, 30, 11 30, NK(LALT))
-    COMBO(ctrl, 30, 12 30, NK(LCTRL))
-    COMBO(shift, 30, 13 30, NK(LSHIFT))
+    COMBO(gui, 30, 10 30, NK(LGUI), ALL_EXCEPT_GAME)
+    COMBO(alt, 30, 11 30, NK(LALT), ALL_EXCEPT_GAME)
+    COMBO(ctrl, 30, 12 30, NK(LCTRL), ALL_EXCEPT_GAME)
+    COMBO(shift, 30, 13 30, NK(LSHIFT), ALL_EXCEPT_GAME)
 
-    COMBO(gui_alt, 30, 10 11 30, NK(LG(LALT)))
-    COMBO(gui_ctrl, 30, 10 12 30, NK(LG(LCTRL)))
-    COMBO(gui_shift, 30, 10 13 30, NK(LG(LSHIFT)))
-    COMBO(alt_ctrl, 30, 11 12 30, NK(LA(LCTRL)))
-    COMBO(alt_shift, 30, 11 13 30, NK(LA(LSHIFT)))
-    COMBO(ctrl_shift, 30, 12 13 30, NK(LC(LSHIFT)))
+    COMBO(gui_alt, 30, 10 11 30, NK(LG(LALT)), ALL_EXCEPT_GAME)
+    COMBO(gui_ctrl, 30, 10 12 30, NK(LG(LCTRL)), ALL_EXCEPT_GAME)
+    COMBO(gui_shift, 30, 10 13 30, NK(LG(LSHIFT)), ALL_EXCEPT_GAME)
+    COMBO(alt_ctrl, 30, 11 12 30, NK(LA(LCTRL)), ALL_EXCEPT_GAME)
+    COMBO(alt_shift, 30, 11 13 30, NK(LA(LSHIFT)), ALL_EXCEPT_GAME)
+    COMBO(ctrl_shift, 30, 12 13 30, NK(LC(LSHIFT)), ALL_EXCEPT_GAME)
 
-    COMBO(gui_alt_ctrl, 30, 10 11 12 30, NK(LG(LA(LCTRL))))
-    COMBO(gui_alt_shift, 30, 10 11 13 30, NK(LG(LA(LSHIFT))))
-    COMBO(gui_ctrl_shift, 30, 10 12 13 30, NK(LG(LC(LSHIFT))))
-    COMBO(alt_ctrl_shift, 30, 11 12 13 30, NK(LA(LC(LSHIFT))))
+    COMBO(gui_alt_ctrl, 30, 10 11 12 30, NK(LG(LA(LCTRL))), ALL_EXCEPT_GAME)
+    COMBO(gui_alt_shift, 30, 10 11 13 30, NK(LG(LA(LSHIFT))), ALL_EXCEPT_GAME)
+    COMBO(gui_ctrl_shift, 30, 10 12 13 30, NK(LG(LC(LSHIFT))), ALL_EXCEPT_GAME)
+    COMBO(alt_ctrl_shift, 30, 11 12 13 30, NK(LA(LC(LSHIFT))), ALL_EXCEPT_GAME)
 
-    COMBO(gui_alt_ctrl_shift, 20, 10 11 12 13 30, NK(LG(LA(LC(LSHIFT)))))
+    COMBO(gui_alt_ctrl_shift, 20, 10 11 12 13 30, NK(LG(LA(LC(LSHIFT)))), ALL_EXCEPT_GAME)
+
+    // other
+    COMBO(compose_key, 30, 14 30, &kp K_CMENU, ALL_EXCEPT_GAME)
 
   //   combo_game {
   //     timeout-ms = <30>;
@@ -121,7 +118,7 @@
   behaviors { // https://github.com/zmkfirmware/zmk/tree/main/app/dts/behaviors
 
     // Mine
-    td_layer: tap_dance_layer { // tap-hold to change layers
+    td_layer: tap_dance_layer { // tap for key, tap-hold to change layer
       compatible = "zmk,behavior-hold-tap";
       label = "TAPDANCE_LAYERS";
       #binding-cells = <2>;
@@ -131,9 +128,9 @@
       bindings = <&to>, <&kp>;
     };
 
-    caps_morph: grave_escape {
+    caps_morph: caps_to_caps_word {
       compatible = "zmk,behavior-mod-morph";
-      label = "GRAVE_ESCAPE";
+      label = "CAPS_TO_CAPS_WORD";
       #binding-cells = <0>;
       bindings = <&kp CAPS>, <&caps_word>;
       mods = <(MOD_LCTL)>;
@@ -145,8 +142,8 @@
       label = "HOMEROW_MODS_LEFT";
       #binding-cells = <2>;
       tapping-term-ms = <280>;
-      // quick-tap-ms = <175>; // repeat on tap-into-hold
-      // global-quick-tap-ms = <150>;  // requires PR #1387
+      quick-tap-ms = <175>; // repeat on tap-into-hold
+      global-quick-tap-ms = <150>;  // requires PR #1387
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
@@ -157,8 +154,8 @@
       label = "HOMEROW_MODS_RIGHT";
       #binding-cells = <2>;
       tapping-term-ms = <280>;
-      // quick-tap-ms = <175>; // repeat on tap-into-hold
-      // global-quick-tap-ms = <150>;  // requires PR #1387
+      quick-tap-ms = <175>; // repeat on tap-into-hold
+      global-quick-tap-ms = <150>;  // requires PR #1387
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <KEYS_L THUMBS>;
@@ -170,7 +167,7 @@
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MODS";
       #binding-cells = <2>;
-      tapping-term-ms = <200>;
+      tapping-term-ms = <180>;
       quick-tap-ms = <0>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&kp>;
@@ -201,7 +198,7 @@
       compatible = "zmk,behavior-hold-tap";
       label = "NOT_SO_STICKY_KEY";
       #binding-cells = <2>;
-      tapping_term_ms = <200>;
+      tapping_term_ms = <180>;
       flavor = "tap-preferred";
       bindings = <&kp>, <&sk>;
     };
@@ -245,7 +242,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMICOLON
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       &mo NAV       &kp SPACE         &skq LSHIFT   &mo SYM_NUM    // REVIEW: maybe I don't need sticky SHIFT
+                                                    &mo_tap NAV BSPC &kp SPACE         &skq LSHIFT   &mo SYM_NUM    // REVIEW: maybe I don't need sticky SHIFT
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
@@ -267,13 +264,13 @@
     nav_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           &kp K_CMENU   &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
+             &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           XXX           &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp BSPC      &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           XXX           XXX           XXX           XXX
+             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           XXX           XXX           XXX           XXX
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           &kp ENTER
+             &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       ___           XXX               &key_repeat   ___
+                                                       ___           XXX               ___           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
@@ -283,9 +280,9 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp EXCL      &kp AT        &kp HASH      &kp DOLLAR    &kp PERCENT       &kp EQUAL     &kp N7        &kp N8        &kp N9        &kp PLUS
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             HRML(SEMI,    COLON,        LBRC,         LPAR)         &kp LBKT          &kp STAR      HRMR(N4,      N5 ,          N6,           MINUS)
+             HRML(SEMI,    LBRC,         LBKT,         LPAR)         &kp COLON          &kp STAR      HRMR(N4,     N5 ,          N6,           N0)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp CARET     &kp AMPS      &kp RBRC      &kp RPAR      &kp RBKT          &kp N0        &kp N1        &kp N2        &kp N3        &kp SLASH
+             &kp CARET     &kp RBKT      &kp RBRC      &kp RPAR      &kp AMPS          &kp MINUS     &kp N1        &kp N2        &kp N3        &kp SLASH
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        ___           ___               XXX           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
