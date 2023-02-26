@@ -63,8 +63,8 @@
     key-positions = <KEYPOS>; \
     bindings = <BINDINGS>; \
     layers = <LAYERS>; \
+    global-quick-tap-ms = <75>; \
   };    
-    // global-quick-tap-ms = <75>; \
 
   /*                KEY POSITIONS
   ╭────────────────────╮ ╭────────────────────╮
