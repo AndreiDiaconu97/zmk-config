@@ -187,13 +187,13 @@
       tapping_term_ms = <0>;
       retro-tap;
       flavor = "hold-preferred";
-      bindings = <&sk>, <&kp>;
+      bindings = <&kp>, <&kp>;
     };
 
     // Urob // "timer-less" homerow mods
     hml: homerow_mods_l {
       compatible = "zmk,behavior-hold-tap";
-      label = "HOMEROW_MODS_LEFT";
+      label = "HOMEROW_MOD_L";
       #binding-cells = <2>;
       flavor = "balanced";
       tapping-term-ms = <280>;
@@ -205,7 +205,7 @@
     };
     hmr: homerow_mods_r {
       compatible = "zmk,behavior-hold-tap";
-      label = "HOMEROW_MODS_RIGHT";
+      label = "HOMEROW_MOD_R";
       #binding-cells = <2>;
       flavor = "balanced";
       tapping-term-ms = <280>;
