@@ -38,7 +38,7 @@
 #define FUNCT 4
 #define BLT 5
 #define GAME 6
-#define ALL_EXCEPT_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT
+#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT
 #define ALL 0xff
 
 // Home row mods
@@ -52,8 +52,9 @@
 //   acceleration-exponent=<2>;
 // };
 
-#define COMBO_TERM_FAST 20
-#define COMBO_TERM_SLOW 30
+#define COMBO_20_MS 20
+#define COMBO_30_MS 30
+#define COMBO_70_MS 70
 
 #define COMBO_STICKY(NAME, BINDINGS, KEYPOS, LAYERS, TIMEOUT) \
   combo_##NAME { \
@@ -62,6 +63,7 @@
     bindings = <BINDINGS>; \
     layers = <LAYERS>; \
     slow-release; \
+    global-quick-tap-ms = <75>; \
   };
 #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, TIMEOUT) \
   combo_##NAME { \
@@ -88,52 +90,52 @@
     compatible = "zmk,combos";
 
     // other
-    COMBO_STICKY(compose_key,        &kp K_CMENU,            14 30,          ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
+    COMBO_STICKY(compose_key,        &kp K_CMENU,            14 30,          NO_GAME, COMBO_30_MS)
 
     // free left // NOTE: can combine combos with hold behaviour
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            11 2,           ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            13 2,           ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            21 12,          ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            23 12,          ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            1 2 3,          ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            11 12 13,       ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            21 22 23,       ALL_EXCEPT_GAME, COMBO_TERM_FAST)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            11 2,           NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            13 2,           NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            21 12,          NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            23 12,          NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            1 2 3,          NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            11 12 13,       NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            21 22 23,       NO_GAME, COMBO_20_MS)
 
     // left homerow combo mods
-    COMBO_STICKY(gui,                NK(LGUI),               10 30,          ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(alt,                NK(LALT),               11 30,          ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(ctrl,               NK(LCTRL),              12 30,          ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(shift,              NK(LSHIFT),             13 30,          ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_alt,            NK(LG(LALT)),           10 11 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_ctrl,           NK(LG(LCTRL)),          10 12 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_shift,          NK(LG(LSHIFT)),         10 13 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(alt_ctrl,           NK(LA(LCTRL)),          11 12 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(alt_shift,          NK(LA(LSHIFT)),         11 13 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(ctrl_shift,         NK(LC(LSHIFT)),         12 13 30,       ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_alt_ctrl,       NK(LG(LA(LCTRL))),      10 11 12 30,    ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_alt_shift,      NK(LG(LA(LSHIFT))),     10 11 13 30,    ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     10 12 13 30,    ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     11 12 13 30,    ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), 10 11 12 13 30, ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
+    COMBO_STICKY(gui,                NK(LGUI),               10 30,          NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(alt,                NK(LALT),               11 30,          NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(ctrl,               NK(LCTRL),              12 30,          NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(shift,              NK(LSHIFT),             13 30,          NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_alt,            NK(LG(LALT)),           10 11 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_ctrl,           NK(LG(LCTRL)),          10 12 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_shift,          NK(LG(LSHIFT)),         10 13 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(alt_ctrl,           NK(LA(LCTRL)),          11 12 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(alt_shift,          NK(LA(LSHIFT)),         11 13 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(ctrl_shift,         NK(LC(LSHIFT)),         12 13 30,       NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_alt_ctrl,       NK(LG(LA(LCTRL))),      10 11 12 30,    NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_alt_shift,      NK(LG(LA(LSHIFT))),     10 11 13 30,    NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     10 12 13 30,    NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     11 12 13 30,    NO_GAME, COMBO_30_MS)
+    COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), 10 11 12 13 30, NO_GAME, COMBO_30_MS)
 
     // utility left hand
-    COMBO(repeat,&key_repeat,   1 2,     ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(tab,   &kp TAB,       2 3,     ALL_EXCEPT_GAME, COMBO_TERM_FAST)
+    COMBO(repeat,&key_repeat,   1 2,     NO_GAME, COMBO_20_MS)
+    COMBO(tab,   &kp TAB,       2 3,     NO_GAME, COMBO_20_MS)
 
-    COMBO(esc,   &kp ESC,       11 12,   ALL, COMBO_TERM_FAST)
-    COMBO(ret,   &kp RETURN,    12 13,   ALL, COMBO_TERM_FAST)
+    COMBO(esc,   &kp ESC,       11 12,   ALL, COMBO_20_MS)
+    COMBO(ret,   &kp RETURN,    12 13,   ALL, COMBO_20_MS)
 
-    COMBO(cut,   &kp LC(X),     21 23,   ALL_EXCEPT_GAME, COMBO_TERM_SLOW)
-    COMBO(copy,  &kp LC(INS),   21 22,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(paste, &kp LS(INS),   22 23,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
+    COMBO(cut,   &kp LC(X),     21 23,   NO_GAME, COMBO_30_MS)
+    COMBO(copy,  &kp LC(INS),   21 22,   NO_GAME, COMBO_20_MS)
+    COMBO(paste, &kp LS(INS),   22 23,   NO_GAME, COMBO_20_MS)
 
     // brackets right hand
-    COMBO(lbrc,  &kp LBRC,      6 7,     ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(rbrc,  &kp RBRC,      7 8,     ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(lpar,  &kp LPAR,      16 17,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(rpar,  &kp RPAR,      17 18,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(lbrk,  &kp LBKT,      26 27,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
-    COMBO(rbrk,  &kp RBKT,      27 28,   ALL_EXCEPT_GAME, COMBO_TERM_FAST)
+    COMBO(lbrc,  &kp LBRC,      6 7,     NO_GAME, COMBO_20_MS)
+    COMBO(rbrc,  &kp RBRC,      7 8,     NO_GAME, COMBO_20_MS)
+    COMBO(lpar,  &kp LPAR,      16 17,   NO_GAME, COMBO_20_MS)
+    COMBO(rpar,  &kp RPAR,      17 18,   NO_GAME, COMBO_20_MS)
+    COMBO(lbrk,  &kp LBKT,      26 27,   NO_GAME, COMBO_20_MS)
+    COMBO(rbrk,  &kp RBKT,      27 28,   NO_GAME, COMBO_20_MS)
 
 
   //   combo_game {
@@ -296,7 +298,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMICOLON
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                        &retro_mo NAV BSPC &retro_sticky LSHIFT SPACE  XXX           &mo SYM_NUM
+                                                  &retro_mo NAV BSPC &kp SPACE         &kp LSHIFT    &mo SYM_NUM
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
@@ -306,7 +308,7 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp Q         &kp W         &kp E         &kp R         &kp T             &kp Y         &kp U         &kp I         &kp O         &kp P
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp A         &kp S         &kp D         &kp F         &kp G             &kp H         &kp J         &kp K         &kp L         &kp SEMICOLON
+             HRML(A,       S,            D,            F)            &kp G             &kp H         HRMR(J,       K,            L,            SEMICOLON)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp V         &kp B             &kp N         &kp M         &kp COMMA     &kp DOT       &kp SLASH
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -315,12 +317,26 @@
       >;
     };
 
+    // hands_down_titanium {  //NOTE - Z and Q on separate layer or combo
+    //   bindings = <
+    //     // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    //          &kp J         &kp G         &kp M         &kp P         &kp V             XXX           &kp DOT       XXX           XXX           &kp SQT
+    //     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    //          HRML(C,       S,            N,            T)            &kp K             &kp COMMA     HRMR(A,       E,            I,            H)
+    //     // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    //          &kp W         &kp F         &kp L         &kp D         &kp B             XXX           &kp U         &kp O         &kp Y         &kp X
+    //     // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+    //                                                    ___           ___               &retro_sticky LSHIFT R ___
+    //     //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+    //   >;
+    // };
+
     nav_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           XXX           &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
+             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           ___           ___           ___           ___
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -329,7 +345,7 @@
       >;
     };
 
-    sym_num_layer { // TODO: put numbers on homerow
+    sym_num_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp GRAVE     &kp DQT       &kp BSLH      &kp SLASH     &kp TILDE         &kp PIPE      &kp PLUS      &kp MINUS     &kp EQUAL     &kp SQT  
