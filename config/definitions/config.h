@@ -1,11 +1,12 @@
 // Layers
 #define BASE 0
 #define QWERTY 1
-#define NAV 2
-#define SYM_NUM 3
-#define FUNCT 4
-#define BLT 5
-#define GAME 6
+#define HANDS_TI 2
+#define NAV 3
+#define SYM_NUM 4
+#define FUNCT 5
+#define BLT 6
+#define GAME 7
 
 #define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT
 #define ALL 0xff
@@ -32,7 +33,6 @@
 //   time-to-max-speed-ms = <680>;
 //   acceleration-exponent=<2>;
 // };
-
 
 /*                KEY POSITIONS
 
