@@ -1,0 +1,101 @@
+/ {
+  #define COMBO_20_MS 20
+  #define COMBO_30_MS 30
+  #define COMBO_70_MS 70
+
+  #define COMBO_STICKY(NAME, BINDINGS, KEYPOS, LAYERS, TIMEOUT) \
+    combo_##NAME { \
+      timeout-ms = <TIMEOUT>; \
+      key-positions = <KEYPOS>; \
+      bindings = <BINDINGS>; \
+      layers = <LAYERS>; \
+      slow-release; \
+      global-quick-tap-ms = <75>; \
+    };
+  #define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, TIMEOUT) \
+    combo_##NAME { \
+      timeout-ms = <TIMEOUT>; \
+      key-positions = <KEYPOS>; \
+      bindings = <BINDINGS>; \
+      layers = <LAYERS>; \
+      global-quick-tap-ms = <75>; \
+  };
+  
+  combos {
+    compatible = "zmk,combos";
+
+    // other
+    COMBO_STICKY(compose_key,        &kp K_CMENU,            LHC TLL,          NO_GAME, COMBO_30_MS)
+
+    // free left // NOTE: can combine combos with hold behaviour
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHR LTM,             NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHI LTM,             NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBR LHM,             NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBI LHM,             NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LTR LTM LTI,         NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHR LHM LHI,         NO_GAME, COMBO_20_MS)
+    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBR LBM LBI,         NO_GAME, COMBO_20_MS)
+
+    // left homerow combo mods
+    // COMBO_STICKY(gui,                NK(LGUI),               LHP TLL,             NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt,                NK(LALT),               LHR TLL,             NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(ctrl,               NK(LCTRL),              LHM TLL,             NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(shift,              NK(LSHIFT),             LHI TLL,             NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt,            NK(LG(LALT)),           LHP LHR TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_ctrl,           NK(LG(LCTRL)),          LHP LHM TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_shift,          NK(LG(LSHIFT)),         LHP LHI TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_ctrl,           NK(LA(LCTRL)),          LHR LHM TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_shift,          NK(LA(LSHIFT)),         LHR LHI TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(ctrl_shift,         NK(LC(LSHIFT)),         LHM LHI TLL,         NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_ctrl,       NK(LG(LA(LCTRL))),      LHP LHR LHM TLL,     NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_shift,      NK(LG(LA(LSHIFT))),     LHP LHR LHI TLL,     NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     LHP LHM LHI TLL,     NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     LHR LHM LHI TLL,     NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), LHP LHR LHM LHI TLL, NO_GAME, COMBO_30_MS)
+
+    // utility left hand
+    // COMBO(repeat,&key_repeat,   LTR LTM,    NO_GAME, COMBO_20_MS)
+    // COMBO(tab,   &kp TAB,       LTM LTI,    NO_GAME, COMBO_20_MS)
+
+    COMBO(esc,   &hml LA(LCTRL)  ESC,       LHR LHM,   NO_GAME, COMBO_20_MS)
+    COMBO(ret,   &hml LC(LSHIFT) RETURN,    LHM LHI,   NO_GAME, COMBO_20_MS)
+
+    // COMBO(cut,   &kp CUT,       LBR LBI,   NO_GAME, COMBO_30_MS)
+    // COMBO(copy,  &kp COPY,      LBR LBM,   NO_GAME, COMBO_20_MS)
+    // COMBO(paste, &kp PASTE,     LBM LBI,   NO_GAME, COMBO_20_MS)
+
+    // brackets right hand
+    // COMBO(lbrc,  &kp LBRC,      RTI RTM,   NO_GAME, COMBO_20_MS)
+    // COMBO(rbrc,  &kp RBRC,      RTM RTR,   NO_GAME, COMBO_20_MS)
+    // COMBO(lpar,  &kp LPAR,      RHI RHM,   NO_GAME, COMBO_20_MS)
+    // COMBO(rpar,  &kp RPAR,      RHM RHR,   NO_GAME, COMBO_20_MS)
+    // COMBO(lbrk,  &kp LBKT,      RBI RBM,   NO_GAME, COMBO_20_MS)
+    // COMBO(rbrk,  &kp RBKT,      RBM RBR,   NO_GAME, COMBO_20_MS)
+    
+
+    // game
+    COMBO(esc_game,  &kp ESC,   LTI LTC,    NO_GAME, COMBO_20_MS)
+
+  //   combo_game {
+  //     timeout-ms = <30>;
+  //     key-positions = <LTM LTI LTC RTC>;
+  //     bindings = <&to GM>;
+  //   };
+  //   combo_sys {
+  //     timeout-ms = <30>;
+  //     key-positions = <LTC RTC RTI>;
+  //     bindings = <&to SYS>;
+  //   };
+  //   combo_caps {
+  //     timeout-ms = <30>;
+  //     key-positions = <LHM LHI LHC>;
+  //     bindings = <&caps_word>;
+  //   };
+  //   lalt {
+  //     timeout-ms = <20>;
+  //     key-positions = <LHP LHR>;
+  //     bindings = <&kp LALT>;
+  //     layers = <SYS>;
+  //   };
+  };
+};
