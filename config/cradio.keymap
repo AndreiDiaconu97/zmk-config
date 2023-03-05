@@ -123,8 +123,8 @@
     COMBO(repeat,&key_repeat,   1 2,     NO_GAME, COMBO_20_MS)
     COMBO(tab,   &kp TAB,       2 3,     NO_GAME, COMBO_20_MS)
 
-    COMBO(esc,   &kp ESC,       11 12,   ALL, COMBO_20_MS)
-    COMBO(ret,   &kp RETURN,    12 13,   ALL, COMBO_20_MS)
+    COMBO(esc,   &kp ESC,       11 12,   NO_GAME, COMBO_20_MS)
+    COMBO(ret,   &kp RETURN,    12 13,   NO_GAME, COMBO_20_MS)
 
     COMBO(cut,   &kp LC(X),     21 23,   NO_GAME, COMBO_30_MS)
     COMBO(copy,  &kp LC(INS),   21 22,   NO_GAME, COMBO_20_MS)
@@ -137,6 +137,9 @@
     COMBO(rpar,  &kp RPAR,      17 18,   NO_GAME, COMBO_20_MS)
     COMBO(lbrk,  &kp LBKT,      26 27,   NO_GAME, COMBO_20_MS)
     COMBO(rbrk,  &kp RBKT,      27 28,   NO_GAME, COMBO_20_MS)
+
+    // game
+    COMBO(esc_game,  &kp ESC,   3 4,     NO_GAME, COMBO_20_MS)
 
 
   //   combo_game {
@@ -337,7 +340,7 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           XXX           &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           ___           ___           ___           ___
+             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
