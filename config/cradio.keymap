@@ -22,6 +22,9 @@
 // #include <dt-bindings/zmk/mouse.h>
 
 // Keys
+#define CUT LC(X)
+#define COPY LC(INS)
+#define PASTE LS(INS)
 // #define BACK LG(LBKT)
 // #define PREV_TAB LC(LS(TAB))
 // #define NEXT_TAB RC(TAB)
@@ -103,44 +106,44 @@
     // COMBO_STICKY(compose_key,        &kp K_CMENU,            21 22 23,       NO_GAME, COMBO_20_MS)
 
     // left homerow combo mods
-    COMBO_STICKY(gui,                NK(LGUI),               10 30,          NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(alt,                NK(LALT),               11 30,          NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(ctrl,               NK(LCTRL),              12 30,          NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(shift,              NK(LSHIFT),             13 30,          NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_alt,            NK(LG(LALT)),           10 11 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_ctrl,           NK(LG(LCTRL)),          10 12 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_shift,          NK(LG(LSHIFT)),         10 13 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(alt_ctrl,           NK(LA(LCTRL)),          11 12 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(alt_shift,          NK(LA(LSHIFT)),         11 13 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(ctrl_shift,         NK(LC(LSHIFT)),         12 13 30,       NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_alt_ctrl,       NK(LG(LA(LCTRL))),      10 11 12 30,    NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_alt_shift,      NK(LG(LA(LSHIFT))),     10 11 13 30,    NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     10 12 13 30,    NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     11 12 13 30,    NO_GAME, COMBO_30_MS)
-    COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), 10 11 12 13 30, NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui,                NK(LGUI),               10 30,          NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt,                NK(LALT),               11 30,          NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(ctrl,               NK(LCTRL),              12 30,          NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(shift,              NK(LSHIFT),             13 30,          NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt,            NK(LG(LALT)),           10 11 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_ctrl,           NK(LG(LCTRL)),          10 12 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_shift,          NK(LG(LSHIFT)),         10 13 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_ctrl,           NK(LA(LCTRL)),          11 12 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_shift,          NK(LA(LSHIFT)),         11 13 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(ctrl_shift,         NK(LC(LSHIFT)),         12 13 30,       NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_ctrl,       NK(LG(LA(LCTRL))),      10 11 12 30,    NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_shift,      NK(LG(LA(LSHIFT))),     10 11 13 30,    NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     10 12 13 30,    NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     11 12 13 30,    NO_GAME, COMBO_30_MS)
+    // COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), 10 11 12 13 30, NO_GAME, COMBO_30_MS)
 
     // utility left hand
-    COMBO(repeat,&key_repeat,   1 2,     NO_GAME, COMBO_20_MS)
-    COMBO(tab,   &kp TAB,       2 3,     NO_GAME, COMBO_20_MS)
+    // COMBO(repeat,&key_repeat,   1 2,     NO_GAME, COMBO_20_MS)
+    // COMBO(tab,   &kp TAB,       2 3,     NO_GAME, COMBO_20_MS)
 
-    COMBO(esc,   &kp ESC,       11 12,   NO_GAME, COMBO_20_MS)
-    COMBO(ret,   &kp RETURN,    12 13,   NO_GAME, COMBO_20_MS)
+    COMBO(esc,   &hml LA(LCTRL) ESC,        11 12,   NO_GAME, COMBO_20_MS)
+    COMBO(ret,   &hml LC(LSHIFT) RETURN,    12 13,   NO_GAME, COMBO_20_MS)
 
-    COMBO(cut,   &kp LC(X),     21 23,   NO_GAME, COMBO_30_MS)
-    COMBO(copy,  &kp LC(INS),   21 22,   NO_GAME, COMBO_20_MS)
-    COMBO(paste, &kp LS(INS),   22 23,   NO_GAME, COMBO_20_MS)
+    // COMBO(cut,   &kp CUT,       21 23,   NO_GAME, COMBO_30_MS)
+    // COMBO(copy,  &kp COPY,      21 22,   NO_GAME, COMBO_20_MS)
+    // COMBO(paste, &kp PASTE,     22 23,   NO_GAME, COMBO_20_MS)
 
     // brackets right hand
-    COMBO(lbrc,  &kp LBRC,      6 7,     NO_GAME, COMBO_20_MS)
-    COMBO(rbrc,  &kp RBRC,      7 8,     NO_GAME, COMBO_20_MS)
-    COMBO(lpar,  &kp LPAR,      16 17,   NO_GAME, COMBO_20_MS)
-    COMBO(rpar,  &kp RPAR,      17 18,   NO_GAME, COMBO_20_MS)
-    COMBO(lbrk,  &kp LBKT,      26 27,   NO_GAME, COMBO_20_MS)
-    COMBO(rbrk,  &kp RBKT,      27 28,   NO_GAME, COMBO_20_MS)
+    // COMBO(lbrc,  &kp LBRC,      6  7,    NO_GAME, COMBO_20_MS)
+    // COMBO(rbrc,  &kp RBRC,      7  8,    NO_GAME, COMBO_20_MS)
+    // COMBO(lpar,  &kp LPAR,      16 17,   NO_GAME, COMBO_20_MS)
+    // COMBO(rpar,  &kp RPAR,      17 18,   NO_GAME, COMBO_20_MS)
+    // COMBO(lbrk,  &kp LBKT,      26 27,   NO_GAME, COMBO_20_MS)
+    // COMBO(rbrk,  &kp RBKT,      27 28,   NO_GAME, COMBO_20_MS)
+    
 
     // game
     COMBO(esc_game,  &kp ESC,   3 4,     NO_GAME, COMBO_20_MS)
-
 
   //   combo_game {
   //     timeout-ms = <30>;
@@ -202,7 +205,7 @@
       label = "HOMEROW_MOD_L";
       #binding-cells = <2>;
       flavor = "balanced";
-      tapping-term-ms = <280>;
+      tapping-term-ms = <250>;
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
@@ -214,7 +217,7 @@
       label = "HOMEROW_MOD_R";
       #binding-cells = <2>;
       flavor = "balanced";
-      tapping-term-ms = <280>;
+      tapping-term-ms = <250>;
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
@@ -274,6 +277,17 @@
       bindings = <&mo>, <&kp>;
     };
 
+    // Keep pressed for momentary layer, tap for sticky layer
+    retro_mo_sk: retro_mo_with_sticky_layer {
+      compatible = "zmk,behavior-hold-tap";
+      label = "RETRO_MO_WITH_TAP";
+      #binding-cells = <2>;
+      tapping_term_ms = <0>;
+      retro-tap;
+      flavor = "hold-preferred";
+      bindings = <&mo>, <&sl>;
+    };
+
     // alpha2macro: behavior_macro_1 {
 		//   compatible = "zmk,behavior-macro";
     //   label = "MACRO1";
@@ -302,7 +316,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SEMICOLON
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                  &retro_mo NAV BSPC &kp SPACE         &kp LSHIFT    &mo SYM_NUM
+                                                  &retro_mo NAV NAV  &kp SPACE         &skq LSHIFT    &mo SYM_NUM
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
       >;
     };
@@ -338,11 +352,11 @@
     nav_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp ESC       &kp HOME      &kp UP        &kp END       &kp INS           XXX           &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
+             &kp TAB       &kp HOME      &kp UP        &kp END       &kp PG_UP         XXX           &kp K_BACK    XXX           &kp K_FORWARD &caps_morph
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             XXX           &kp LEFT      &kp DOWN      &kp RIGHT     &kp DEL           XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
+             &kp BSPC      &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN         XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp ENTER     &kp PG_UP     &kp TAB       &kp PG_DN     XXX               &kp PSCRN     XXX           XXX           XXX           XXX
+             &kp DEL       &kp COPY      &kp CUT       &kp PASTE     &kp INS           &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        ___           XXX               ___           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -366,11 +380,11 @@
     function_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             &kp C_STOP    &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp C_BRI_UP      &kp F12       &kp F7        &kp F8        &kp F9        &tog BLT
+             &kp C_STOP    &kp C_PREV    &kp C_PP      &kp C_NEXT    &kp C_BRI_UP      XXX           XXX           &kp F11       &kp F12       &tog BLT
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             NK(LGUI)      NK(LALT)      NK(LCTRL)     NK(LSHIFT)    &kp C_BRI_DN      &kp F11       &kp F4        &kp F5        &kp F6        XXX
+             HRML(F1,      F2,           F3,           F4)           &kp F5            &kp F6        HRMR(F7,      F8,           F9,           F10)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &tog QWERTY   &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  XXX               &kp F10       &kp F1        &kp F2        &kp F3        &tog GAME
+             &tog QWERTY   &kp C_VOL_DN  &kp C_MUTE    &kp C_VOL_UP  &kp C_BRI_DN      XXX           XXX           XXX           XXX           &tog GAME
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        ___           XXX               XXX           ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
