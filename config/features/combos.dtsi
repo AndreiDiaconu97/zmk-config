@@ -68,8 +68,8 @@
     // COMBO(paste, &kp PASTE,     LBM LBI,   NO_GAME, COMBO_20_MS)
 
     //// RIGHT HAND: symbols ////////////////////
-    // COMBO(lbrc,  &kp LBRC,              RTI RTM,  NO_GAME,  COMBO_20_MS)
-    // COMBO(rbrc,  &kp RBRC,              RTM RTR,  NO_GAME,  COMBO_20_MS)
+    COMBO(lbrc,  &kp LBRC,              RTI RTM,  NO_GAME,  COMBO_20_MS)
+    COMBO(rbrc,  &kp RBRC,              RTM RTR,  NO_GAME,  COMBO_20_MS)
     COMBO(lpar,  &hmr LC(LSHIFT) LPAR,  RHI RHM,  NO_GAME,  COMBO_20_MS)
     COMBO(rpar,  &hmr LA(LCTRL)  RPAR,  RHM RHR,  NO_GAME,  COMBO_20_MS)
     COMBO(lbrk,  &kp LBKT,              RBI RBM,  NO_GAME,  COMBO_20_MS)
