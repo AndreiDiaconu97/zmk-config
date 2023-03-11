@@ -121,6 +121,8 @@
     SYMBOL(mc_under,           &kp UNDER)
 
     LAYERTAP_SYMBOL(lt_bspc,   &sh_bspc) // TODO: &to layer on hold? (eg. &mo NAV on hold, BSPC on tap, &to NAV on tap-hold). Remember to set quick-tap-ms to 0, so that tap-hold does not simply repeats tap.
-    LAYERTAP_SYMBOL(lt_r,      &kp R)
+    
+    SYMBOL(mc_r,            &kp R)
+    LAYERTAP_SYMBOL(lt_r,   &mc_r)
   };
 };
