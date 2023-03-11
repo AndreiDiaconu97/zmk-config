@@ -215,6 +215,7 @@
       flavor = "balanced";
       bindings = <&mo>, <&bspc_del>;
     };
+    
     mo_bal: mo_bal {
       compatible = "zmk,behavior-hold-tap";
       label = "mo_bal";

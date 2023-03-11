@@ -7,8 +7,9 @@
 #define FUNCT 5
 #define BLT 6
 #define GAME 7
+#define HUB 8
 
-#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT
+#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT HUB
 #define ALL 0xff
 
 // Keys
