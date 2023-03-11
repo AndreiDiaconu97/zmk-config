@@ -150,7 +150,7 @@
       label = "CAPS_DANCE";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&kp CAPS>, <&caps_word>;
+      bindings = <&caps_word>, <&kp CAPS>;
     };
 
     skq: sticky_key_quick_release { // Callum // needed for sticky SHIFT

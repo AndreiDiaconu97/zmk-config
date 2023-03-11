@@ -9,16 +9,12 @@
 /* TODO
 - LAYER SWITCHING IDEAS:
     - HOLD alpha keys (slower, but more keys available)
-    - press COMBOs of alphas (much faster, but have to avoid common sequences)
+        - similar alternative is TAP-HOLD
+    - press COMBOs of alphas (much faster, but have to avoid common sequences, and too much chordind causes fatigue)
 - Mod-tap with no delay and retro-tap vs &lt? --> could not use &lt since is laggier
-- try homerow mods with opposite hands on main layer (or even all layers): viable with bottom row mods
 - put as much functionality on left hand so that I can use mouse without much switching
 - find GOOD backspace position. Find fast way to delete one word
-- do I really need dedicated right homerow mods for nav layer?
-- assign something to right thumb layer tap
-- move function layer to double thumb combo since I use it rarely? I prefer easier switching between nav and sym_num layers.
-- find a way to optionally make permanent layers
-- faster game layer access
+- Do I really need dedicated right homerow mods for nav layer? It seems so...
 - find a use for double thumb combos (30 31), (32 33), (30 33), (31 32), (30 32), (31 33)
 - move GUI to lower pinkies?
 */

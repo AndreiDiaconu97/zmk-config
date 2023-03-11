@@ -26,9 +26,10 @@
     compatible = "zmk,combos";
 
     //// OTHER ////////////////////
-    COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS)
+    COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS) // REVIEW
     COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
-    COMBO(caps_dance,      &caps_dance,          LHI RHI,        NO_GAME,  COMBO_30_MS)
+    COMBO(caps_dance,      &caps_dance,          LHI RHI,        ALL,      COMBO_70_MS)
+    // COMBO(fun_layer ,      &mo FUNCT,            TLL TRR,        ALL,      COMBO_30_MS)
 
     //// LEFT HOMEROW COMBO MODS ////////////////////
     // COMBO_STICKY(gui,                NK(LGUI),               LHP TLL,             NO_GAME, COMBO_30_MS)
