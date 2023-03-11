@@ -5,12 +5,13 @@
 #define NAV 3
 #define SYM_NUM 4
 #define FUNCT 5
-#define BLT 6
-#define GAME 7
-#define HUB 8
+#define HUB 6
+#define BLT 7
+#define GAME 8
+#define NPD 9
 
-#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT BLT HUB
-#define ALL 0xff
+#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT HUB BLT NPD
+#define ALL 0xffs
 
 // Keys
 #define XXX &none
