@@ -104,12 +104,6 @@
     MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
     MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
-    SYMBOL(mc_dqt,             &kp DQT)
-    SYMBOL(mc_tilde,           &kp TILDE)
-    SYMBOL(mc_bslh,            &kp BSLH)
-    SYMBOL(mc_plus,            &kp PLUS)
-    SYMBOL(mc_minus,           &kp MINUS)
-
     SYMBOL(mc_excl,            &kp EXCL)
     SYMBOL(mc_at,              &kp AT)
     SYMBOL(mc_hash,            &kp HASH)
@@ -119,7 +113,19 @@
     SYMBOL(mc_amps,            &kp AMPS)
     SYMBOL(mc_star,            &kp STAR)
     SYMBOL(mc_qmark,           &kp QMARK)
+
+    SYMBOL(mc_grave,           &kp GRAVE)
+    SYMBOL(mc_dqt,             &kp DQT)
+    SYMBOL(mc_minus,           &kp MINUS)
+    SYMBOL(mc_plus,            &kp PLUS)
+    SYMBOL(mc_tilde,           &kp TILDE)
+    SYMBOL(mc_pipe,            &kp PIPE)
+    SYMBOL(mc_equal,           &kp EQUAL)
+    SYMBOL(mc_lt,              &kp LT)
+    SYMBOL(mc_gt,              &kp GT)
+    // SYMBOL(mc_bslh,            &kp BSLH)
     SYMBOL(mc_under,           &kp UNDER)
+
 
     LAYERTAP_SYMBOL(lt_bspc,   &sh_bspc) // TODO: &to layer on hold? (eg. &mo NAV on hold, BSPC on tap, &to NAV on tap-hold). Remember to set quick-tap-ms to 0, so that tap-hold does not simply repeats tap.
     
