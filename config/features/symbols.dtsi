@@ -43,6 +43,8 @@
       bindings = <&nk>, <BINDINGS>; \
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS>; \
     };
+  #define HRMR_MT(k1,k2,k3,k4) &k1 LGUI   0  &k2 LALT  0  &k3 LCTRL 0  &k4 LSHIFT 0
+  #define HRMR_MT(k1,k2,k3,k4) &k1 RSHIFT 0  &k2 RCTRL 0  &k3 RALT  0  &k4 RGUI   0
 
   #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
      NAME: NAME { \
@@ -92,15 +94,15 @@
     SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
     SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    // MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
 
-    // MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_dqt,             &kp DQT)
     SYMBOL(mc_tilde,           &kp TILDE)
