@@ -30,7 +30,6 @@
       bindings = <HOLD>, <TAP>; \
     };
 
-  // FIXME
   #define MODTAP_SYMBOL(NAME, BINDINGS, HOLD_TRIGGER_KEYS) \
      NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
@@ -41,7 +40,7 @@
       quick-tap-ms = <175>; \
       global-quick-tap-ms = <150>; \
       hold-trigger-on-release; \
-      bindings = <&sk>, <BINDINGS>; \
+      bindings = <&nk>, <BINDINGS>; \
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS>; \
     };
 
@@ -93,15 +92,15 @@
     SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
     SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
 
-    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_dqt,             &kp DQT)
     SYMBOL(mc_tilde,           &kp TILDE)
