@@ -87,6 +87,13 @@
       bindings = <&caps_word>, <&kp CAPS>;
       mods = <(MOD_LCTL)>;
     };
+    shift_caps: shift_caps {
+      compatible = "zmk,behavior-tap-dance";
+      label = "SHIFT_CAPS";
+      #binding-cells = <0>;
+      tapping-term-ms = <180>;
+      bindings = <&skq LSHIFT>, <&caps_word>;
+    };
 
     retro_sticky: sticky_with_retro { // timer-less hold mod with tap activation if no other key is pressed
       compatible = "zmk,behavior-hold-tap";
@@ -215,7 +222,7 @@
       flavor = "balanced";
       bindings = <&mo>, <&bspc_del>;
     };
-    
+
     mo_bal: mo_bal {
       compatible = "zmk,behavior-hold-tap";
       label = "mo_bal";
