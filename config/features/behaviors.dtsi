@@ -61,16 +61,17 @@
 / {
   behaviors { // https://github.com/zmkfirmware/zmk/tree/main/app/dts/behaviors
   
-    conditional_layers {
-      compatible = "zmk,conditional-layers";
-      tri_layer {
-        if-layers = <NAV SYM_NUM>;
-        then-layer = <FUNCT>;
-      };
-    };
+    // conditional_layers {
+    //   compatible = "zmk,conditional-layers";
+    //   tri_layer {
+    //     if-layers = <NAV SYM_NUM>;
+    //     then-layer = <FUNCT>;
+    //   };
+    // };
 
-    // Urob // "timer-less" homerow mods //////////////////////////////////
-    hml: homerow_mods_l {
+    // homerow mods ///////////////////////////////////////////////////////
+
+    hml: homerow_mods_l { // Urob // "timer-less" 
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MOD_L";
       #binding-cells = <2>;
@@ -82,7 +83,7 @@
       bindings = <&sk>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
     };
-    hmr: homerow_mods_r {
+    hmr: homerow_mods_r { // Urob // "timer-less" 
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MOD_R";
       #binding-cells = <2>;
@@ -94,8 +95,8 @@
       bindings = <&sk>, <&kp>;
       hold-trigger-key-positions = <KEYS_L THUMBS>;
     };
-    #define HRML(k1,k2,k3,k4) &hml LGUI k1 &hml LALT k2 &hml LCTRL k3 &hml LSHIFT k4
-    #define HRMR(k1,k2,k3,k4) &hmr RSHIFT k1 &hmr RCTRL k2 &hmr RALT k3 &hmr RGUI k4
+    #define HRML(k1,k2,k3,k4) &hml LGUI   k1  &hml LALT  k2  &hml LCTRL k3  &hml LSHIFT k4
+    #define HRMR(k1,k2,k3,k4) &hmr RSHIFT k1  &hmr RCTRL k2  &hmr RALT  k3  &hmr RGUI   k4
 
     // Useful for modifier-clicking without the modifier remaining active
     nk: not_so_sticky_key { // Callum mods // // Sticky key on tap, normal key on hold
@@ -150,10 +151,11 @@
       label = "CAPS_DANCE";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&kp CAPS>, <&caps_word>;
+      bindings = <&caps_word>, <&kp CAPS>;
     };
+    #define MO_SL(key) &mo_sl key key
 
-    skq: sticky_key_quick_release { // Callum // needed for sticky SHIFT
+    skq: sticky_key_quick_release { // Callum // used for sticky SHIFT
       compatible = "zmk,behavior-sticky-key";
       label = "STICKY_KEY_QUICK_RELEASE";
       #binding-cells = <1>;
@@ -161,6 +163,15 @@
       release-after-ms = <1000>;
       quick-release; // no double capitalization when rolling keys
     };
+    nkq: not_so_sticky_key_quick_release { // used for sticky SHIFT
+      compatible = "zmk,behavior-hold-tap";
+      label = "NOT_SO_STICKY_KEY_QUICK_RELEASE";
+      #binding-cells = <2>;
+      tapping-term-ms = <180>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&skq>;
+    };
+    #define NKQ(key) &nkq key key
 
 
     // OLD ////////////////////////////////////////////////////////////////
