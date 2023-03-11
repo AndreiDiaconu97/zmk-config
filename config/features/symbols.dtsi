@@ -119,6 +119,6 @@
     SYMBOL(mc_qmark,           &kp QMARK)
     SYMBOL(mc_under,           &kp UNDER)
 
-    LAYERTAP_SYMBOL(th_bspc,   &bspc_del)
+    LAYERTAP_SYMBOL(th_bspc,   &mp_bspc)
   };
 };
