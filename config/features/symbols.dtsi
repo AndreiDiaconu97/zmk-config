@@ -30,6 +30,7 @@
       bindings = <HOLD>, <TAP>; \
     };
 
+  // FIXME
   #define MODTAP_SYMBOL(NAME, BINDINGS, HOLD_TRIGGER_KEYS) \
      NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
@@ -49,9 +50,9 @@
       compatible = "zmk,behavior-hold-tap"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <2>; \
-      tapping-term-ms = <0>; \
-      flavor = "hold-preferred"; \
-      retro-tap; \
+      tapping-term-ms = <200>; \
+      quick-tap-ms = <175>; \
+      flavor = "balanced"; \
       bindings = <&mo>, <BINDINGS>; \
     };
 
@@ -76,31 +77,31 @@
 
   symbols {
 
-    SHIFTED_SYMBOL(mp_comma,   &kp COMMA, &kp SEMICOLON)
-    SHIFTED_SYMBOL(mp_dot,     &kp DOT, &kp COLON)
-    SHIFTED_SYMBOL(mp_bspc,    &kp BACKSPACE, &kp DELETE)
-    SHIFTED_SYMBOL(mp_slash,   &kp SLASH, &kp BSLH)
+    SHIFTED_SYMBOL(sh_comma,   &kp COMMA, &kp SEMICOLON)
+    SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
+    SHIFTED_SYMBOL(sh_bspc,    &kp BACKSPACE, &kp DELETE)
+    SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
 
-    SHIFTED_SYMBOL(mp_n1,      &kp N1, &kp KP_N1)
-    SHIFTED_SYMBOL(mp_n2,      &kp N2, &kp KP_N2)
-    SHIFTED_SYMBOL(mp_n3,      &kp N3, &kp KP_N3)
-    SHIFTED_SYMBOL(mp_n4,      &kp N4, &kp KP_N4)
-    SHIFTED_SYMBOL(mp_n5,      &kp N5, &kp KP_N5)
-    SHIFTED_SYMBOL(mp_n6,      &kp N6, &kp KP_N6)
-    SHIFTED_SYMBOL(mp_n7,      &kp N7, &kp KP_N7)
-    SHIFTED_SYMBOL(mp_n8,      &kp N8, &kp KP_N8)
-    SHIFTED_SYMBOL(mp_n9,      &kp N9, &kp KP_N9)
-    SHIFTED_SYMBOL(mp_n0,      &kp N0, &kp KP_N0)
+    SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
+    SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
+    SHIFTED_SYMBOL(sh_n3,      &kp N3, &kp KP_N3)
+    SHIFTED_SYMBOL(sh_n4,      &kp N4, &kp KP_N4)
+    SHIFTED_SYMBOL(sh_n5,      &kp N5, &kp KP_N5)
+    SHIFTED_SYMBOL(sh_n6,      &kp N6, &kp KP_N6)
+    SHIFTED_SYMBOL(sh_n7,      &kp N7, &kp KP_N7)
+    SHIFTED_SYMBOL(sh_n8,      &kp N8, &kp KP_N8)
+    SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
+    SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    MODTAP_SYMBOL(th_n1,       &mp_n1, KEYS_R THUMBS)
-    MODTAP_SYMBOL(th_n2,       &mp_n2, KEYS_R THUMBS)
-    MODTAP_SYMBOL(th_n3,       &mp_n3, KEYS_R THUMBS)
-    MODTAP_SYMBOL(th_n4,       &mp_n4, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
 
-    MODTAP_SYMBOL(th_n7,       &mp_n7, KEYS_L THUMBS)
-    MODTAP_SYMBOL(th_n8,       &mp_n8, KEYS_L THUMBS)
-    MODTAP_SYMBOL(th_n9,       &mp_n9, KEYS_L THUMBS)
-    MODTAP_SYMBOL(th_n0,       &mp_n0, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_dqt,             &kp DQT)
     SYMBOL(mc_tilde,           &kp TILDE)
@@ -119,6 +120,7 @@
     SYMBOL(mc_qmark,           &kp QMARK)
     SYMBOL(mc_under,           &kp UNDER)
 
-    LAYERTAP_SYMBOL(th_bspc,   &mp_bspc)
+    LAYERTAP_SYMBOL(lt_bspc,   &sh_bspc) // TODO: &to layer on hold? (eg. &mo NAV on hold, BSPC on tap, &to NAV on tap-hold). Remember to set quick-tap-ms to 0, so that tap-hold does not simply repeats tap.
+    LAYERTAP_SYMBOL(lt_r,   &kp R)
   };
 };
