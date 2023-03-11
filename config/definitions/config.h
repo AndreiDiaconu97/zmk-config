@@ -11,7 +11,7 @@
 #define NPD 9
 
 #define NO_GAME BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT NPD
-#define ALL 0xffs
+#define ALL 0xff
 
 // Keys
 #define XXX &none
