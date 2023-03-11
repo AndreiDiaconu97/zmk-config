@@ -97,6 +97,17 @@
     #define HRML(k1,k2,k3,k4) &hml LGUI k1 &hml LALT k2 &hml LCTRL k3 &hml LSHIFT k4
     #define HRMR(k1,k2,k3,k4) &hmr RSHIFT k1 &hmr RCTRL k2 &hmr RALT k3 &hmr RGUI k4
 
+    // Useful for modifier-clicking without the modifier remaining active
+    nk: not_so_sticky_key { // Callum mods // // Sticky key on tap, normal key on hold
+      compatible = "zmk,behavior-hold-tap";
+      label = "NOT_SO_STICKY_KEY";
+      #binding-cells = <2>;
+      tapping-term-ms = <180>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&sk>;
+    };
+    #define NK(key) &nk key key
+
 
     // Layer-switching ////////////////////////////////////////////////////
     
@@ -153,18 +164,6 @@
 
 
     // OLD ////////////////////////////////////////////////////////////////
-
-    // // Sticky key on tap, normal key on hold
-    // // Useful for modifier-clicking without the modifier remaining active
-    // nk: not_so_sticky_key { // used by homerow mods in Callum
-    //   compatible = "zmk,behavior-hold-tap";
-    //   label = "NOT_SO_STICKY_KEY";
-    //   #binding-cells = <2>;
-    //   tapping-term-ms = <180>;
-    //   flavor = "tap-preferred";
-    //   bindings = <&kp>, <&sk>;
-    // };
-    // #define NK(key) &nk key key
 
     // tap for key, tap-hold to change layer, can be useful if needing extra layer buttons (eg, tap-hold Q to go to BASE layer)
     // td_layer: tap_dance_layer { 
