@@ -153,6 +153,7 @@
       tapping-term-ms = <200>;
       bindings = <&caps_word>, <&kp CAPS>;
     };
+    #define MO_SL(key) &mo_sl key key
 
     skq: sticky_key_quick_release { // Callum // used for sticky SHIFT
       compatible = "zmk,behavior-sticky-key";

@@ -30,6 +30,7 @@
       bindings = <HOLD>, <TAP>; \
     };
 
+  // FIXME
   #define MODTAP_SYMBOL(NAME, BINDINGS, HOLD_TRIGGER_KEYS) \
      NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
