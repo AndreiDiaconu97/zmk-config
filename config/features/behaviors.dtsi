@@ -154,7 +154,7 @@
       bindings = <&caps_word>, <&kp CAPS>;
     };
 
-    skq: sticky_key_quick_release { // Callum // needed for sticky SHIFT
+    skq: sticky_key_quick_release { // Callum // used for sticky SHIFT
       compatible = "zmk,behavior-sticky-key";
       label = "STICKY_KEY_QUICK_RELEASE";
       #binding-cells = <1>;
@@ -162,7 +162,7 @@
       release-after-ms = <1000>;
       quick-release; // no double capitalization when rolling keys
     };
-    nkq: not_so_sticky_key_quick_release {
+    nkq: not_so_sticky_key_quick_release { // used for sticky SHIFT
       compatible = "zmk,behavior-hold-tap";
       label = "NOT_SO_STICKY_KEY_QUICK_RELEASE";
       #binding-cells = <2>;
