@@ -26,7 +26,7 @@
 
     //// OTHER ////////////////////
     COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS)
-    COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
+    COMBO(to_hub,          &to HUB,              LBI LBC TLR,    NO_GAME,      COMBO_30_MS)
 
     //// FREE LEFT //////////////////// NOTE: can combine combos with hold behaviour
     // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHR LTM,             NO_GAME, COMBO_20_MS)
