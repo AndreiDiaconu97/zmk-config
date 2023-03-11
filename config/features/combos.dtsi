@@ -21,21 +21,14 @@
       global-quick-tap-ms = <75>; \
   };
   
+  // NOTE: can combine combos with hold behaviour
   combos {
     compatible = "zmk,combos";
 
     //// OTHER ////////////////////
     COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS)
     COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
-
-    //// FREE LEFT //////////////////// NOTE: can combine combos with hold behaviour
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHR LTM,             NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHI LTM,             NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBR LHM,             NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBI LHM,             NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LTR LTM LTI,         NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LHR LHM LHI,         NO_GAME, COMBO_20_MS)
-    // COMBO_STICKY(compose_key,        &kp K_CMENU,            LBR LBM LBI,         NO_GAME, COMBO_20_MS)
+    COMBO(to_hub,          &caps_dance,          LHI RHI,        NO_GAME,  COMBO_30_MS)
 
     //// LEFT HOMEROW COMBO MODS ////////////////////
     // COMBO_STICKY(gui,                NK(LGUI),               LHP TLL,             NO_GAME, COMBO_30_MS)
@@ -54,18 +47,14 @@
     // COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     LHR LHM LHI TLL,     NO_GAME, COMBO_30_MS)
     // COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), LHP LHR LHM LHI TLL, NO_GAME, COMBO_30_MS)
 
-    //// LEFT HAND: utility ////////////////////
-    // COMBO(repeat,&key_repeat,   LTR LTM,    NO_GAME, COMBO_20_MS)
-    // COMBO(tab,   &kp TAB,       LTM LTI,    NO_GAME, COMBO_20_MS)
-
+    //// LEFT HAND ////////////////////
     COMBO(esc,   &hml LA(LCTRL)   ESC,        LHR LHM,  NO_GAME, COMBO_20_MS)
     COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME, COMBO_20_MS)
-
     // COMBO(cut,   &kp CUT,       LBR LBI,   NO_GAME, COMBO_30_MS)
     // COMBO(copy,  &kp COPY,      LBR LBM,   NO_GAME, COMBO_20_MS)
     // COMBO(paste, &kp PASTE,     LBM LBI,   NO_GAME, COMBO_20_MS)
 
-    //// RIGHT HAND: symbols ////////////////////
+    //// RIGHT HAND ////////////////////
     COMBO(lbrc,  &kp LBRC,              RTI RTM,  NO_GAME,  COMBO_20_MS)
     COMBO(rbrc,  &kp RBRC,              RTM RTR,  NO_GAME,  COMBO_20_MS)
     COMBO(lpar,  &hmr LC(LSHIFT) LPAR,  RHI RHM,  NO_GAME,  COMBO_20_MS)
@@ -73,7 +62,6 @@
     COMBO(lbrk,  &kp LBKT,              RBI RBM,  NO_GAME,  COMBO_20_MS)
     COMBO(rbrk,  &kp RBKT,              RBM RBR,  NO_GAME,  COMBO_20_MS)
     
-
     //// GAME ////////////////////
     COMBO(esc_game,  &kp ESC,   LTP LTR,    GAME, COMBO_20_MS)
 
