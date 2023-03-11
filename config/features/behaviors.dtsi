@@ -133,7 +133,7 @@
     };
     #define MO_SL(key) &mo_sl key key
 
-    mo_bal: mo_kp_bal { // DEFAULT in symbols.dtsi
+    mo_bal: mo_kp_bal { // alternative to LAYERTAP in symbols.dtsi
       compatible = "zmk,behavior-hold-tap";
       label = "mo_bal";
       #binding-cells = <2>;
