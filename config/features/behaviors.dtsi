@@ -205,23 +205,23 @@
 		//   bindings = < &sl CALLUM_BASE >;
 	  // };
 
-    bspc_del: backspace_delete {
-      compatible = "zmk,behavior-mod-morph";
-      label = "BACKSPACE_DELETE";
-      #binding-cells = <0>;
-      bindings = <&kp BACKSPACE>, <&kp DELETE>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-      // keep-mods = <(MOD_RSFT)>;
-    };
-    lt_bspc: lt_bspc {
-      compatible = "zmk,behavior-hold-tap";
-      label = "lt_bspc";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      quick-tap-ms = <175>;
-      flavor = "balanced";
-      bindings = <&mo>, <&bspc_del>;
-    };
+    // bspc_del: backspace_delete {
+    //   compatible = "zmk,behavior-mod-morph";
+    //   label = "BACKSPACE_DELETE";
+    //   #binding-cells = <0>;
+    //   bindings = <&kp BACKSPACE>, <&kp DELETE>;
+    //   mods = <(MOD_LSFT|MOD_RSFT)>;
+    //   // keep-mods = <(MOD_RSFT)>;
+    // };
+    // lt_bspc: lt_bspc {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "lt_bspc";
+    //   #binding-cells = <2>;
+    //   tapping-term-ms = <200>;
+    //   quick-tap-ms = <175>;
+    //   flavor = "balanced";
+    //   bindings = <&mo>, <&bspc_del>;
+    // };
 
     mo_bal: mo_bal {
       compatible = "zmk,behavior-hold-tap";
