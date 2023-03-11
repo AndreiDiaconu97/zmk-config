@@ -25,12 +25,6 @@
 // #define NEXT_TAB RC(TAB)
 // #define FWRD LG(RBKT)
 
-// Home row mods
-#define HRML(k1,k2,k3,k4) &hml LGUI k1 &hml LALT k2 &hml LCTRL k3 &hml LSHIFT k4
-#define HRMR(k1,k2,k3,k4) &hmr RSHIFT k1 &hmr RCTRL k2 &hmr RALT k3 &hmr RGUI k4
-
-#define NK(key) &nk key key
-
 // &mmv {
 //   time-to-max-speed-ms = <680>;
 //   acceleration-exponent=<2>;
