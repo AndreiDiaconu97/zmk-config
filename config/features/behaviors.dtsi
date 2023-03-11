@@ -61,13 +61,13 @@
 / {
   behaviors { // https://github.com/zmkfirmware/zmk/tree/main/app/dts/behaviors
   
-    conditional_layers {
-      compatible = "zmk,conditional-layers";
-      tri_layer {
-        if-layers = <NAV SYM_NUM>;
-        then-layer = <FUNCT>;
-      };
-    };
+    // conditional_layers {
+    //   compatible = "zmk,conditional-layers";
+    //   tri_layer {
+    //     if-layers = <NAV SYM_NUM>;
+    //     then-layer = <FUNCT>;
+    //   };
+    // };
 
     // Urob // "timer-less" homerow mods //////////////////////////////////
     hml: homerow_mods_l {
