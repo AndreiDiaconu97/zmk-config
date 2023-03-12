@@ -146,14 +146,13 @@
 
     // OTHER //////////////////////////////////////////////////////////////
 
-    caps_dance: caps_dance {
-      compatible = "zmk,behavior-tap-dance";
-      label = "CAPS_DANCE";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&caps_word>, <&kp CAPS>;
-    };
-    #define MO_SL(key) &mo_sl key key
+    // caps_dance: caps_dance {
+    //   compatible = "zmk,behavior-tap-dance";
+    //   label = "CAPS_DANCE";
+    //   #binding-cells = <0>;
+    //   tapping-term-ms = <200>;
+    //   bindings = <&caps_word>, <&kp CAPS>;
+    // };
 
     skq: sticky_key_quick_release { // Callum // used for sticky SHIFT
       compatible = "zmk,behavior-sticky-key";
