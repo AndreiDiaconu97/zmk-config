@@ -17,6 +17,15 @@
       bindings = <UNSHIFTED>, <SHIFTED>; \
       mods = <(MOD_LSFT|MOD_RSFT)>; \
     };
+  #define SHIFTED_SYMBOL_WITH_KEEP(NAME, UNSHIFTED, SHIFTED, MODS, KEEP_MODS) \
+    NAME: NAME { \
+      compatible = "zmk,behavior-mod-morph"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      bindings = <UNSHIFTED>, <SHIFTED>; \
+      mods = <MODS>; \
+      keep-mods = <KEEP_MODS>; \
+    };
 
   #define TAPHOLD_SYMBOL(NAME, TAP, HOLD) \
      NAME: NAME { \
@@ -80,29 +89,48 @@
 
     SHIFTED_SYMBOL(sh_comma,   &kp COMMA, &kp SEMICOLON)
     SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
-    SHIFTED_SYMBOL(sh_bspc,    &kp BACKSPACE, &kp DELETE)
     SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
+    SHIFTED_SYMBOL(sh_shift,   &skq LSHIFT, &caps_word)
+    // skq_shift: skq_shift {
+    //   compatible = "zmk,behavior-sticky-key";
+    //   label = "skq_shift";
+    //   #binding-cells = <1>;
+    //   bindings = <&sh_shift>;
+    //   release-after-ms = <1000>;
+    //   quick-release; // no double capitalization when rolling keys
+    // };
+    // nkq_shift: nkq_shift {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "nkq_shift";
+    //   #binding-cells = <2>;
+    //   tapping-term-ms = <180>;
+    //   flavor = "tap-preferred";
+    //   bindings = <&sh_shift>, <&skq_shift>;
+    // };
 
-    SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
-    SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
-    SHIFTED_SYMBOL(sh_n3,      &kp N3, &kp KP_N3)
-    SHIFTED_SYMBOL(sh_n4,      &kp N4, &kp KP_N4)
-    SHIFTED_SYMBOL(sh_n5,      &kp N5, &kp KP_N5)
-    SHIFTED_SYMBOL(sh_n6,      &kp N6, &kp KP_N6)
-    SHIFTED_SYMBOL(sh_n7,      &kp N7, &kp KP_N7)
-    SHIFTED_SYMBOL(sh_n8,      &kp N8, &kp KP_N8)
-    SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
-    SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
+    // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
+    SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_RSFT)
 
-    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+    // SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
+    // SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
+    // SHIFTED_SYMBOL(sh_n3,      &kp N3, &kp KP_N3)
+    // SHIFTED_SYMBOL(sh_n4,      &kp N4, &kp KP_N4)
+    // SHIFTED_SYMBOL(sh_n5,      &kp N5, &kp KP_N5)
+    // SHIFTED_SYMBOL(sh_n6,      &kp N6, &kp KP_N6)
+    // SHIFTED_SYMBOL(sh_n7,      &kp N7, &kp KP_N7)
+    // SHIFTED_SYMBOL(sh_n8,      &kp N8, &kp KP_N8)
+    // SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
+    // SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+
+    // MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_excl,            &kp EXCL)
     SYMBOL(mc_at,              &kp AT)
