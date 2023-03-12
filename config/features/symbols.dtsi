@@ -17,6 +17,15 @@
       bindings = <UNSHIFTED>, <SHIFTED>; \
       mods = <(MOD_LSFT|MOD_RSFT)>; \
     };
+  #define SHIFTED_SYMBOL_WITH_KEEP(NAME, UNSHIFTED, SHIFTED, MODS, KEEP_MODS) \
+    NAME: NAME { \
+      compatible = "zmk,behavior-mod-morph"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      bindings = <UNSHIFTED>, <SHIFTED>; \
+      mods = <MODS>; \
+      keep-mods = <KEEP_MODS>; \
+    };
 
   #define TAPHOLD_SYMBOL(NAME, TAP, HOLD) \
      NAME: NAME { \
@@ -80,9 +89,28 @@
 
     SHIFTED_SYMBOL(sh_comma,   &kp COMMA, &kp SEMICOLON)
     SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
-    SHIFTED_SYMBOL(sh_bspc,    &kp BACKSPACE, &kp DELETE)
     SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
-    SHIFTED_SYMBOL(sh_shift,   NKQ(LSHIFT), &kp caps_word)
+
+    SHIFTED_SYMBOL(sh_shift,   &skq LSHIFT, &kp caps_word)
+    // skq_shift: skq_shift {
+    //   compatible = "zmk,behavior-sticky-key";
+    //   label = "skq_shift";
+    //   #binding-cells = <1>;
+    //   bindings = <&sh_shift>;
+    //   release-after-ms = <1000>;
+    //   quick-release; // no double capitalization when rolling keys
+    // };
+    // nkq_shift: nkq_shift {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "nkq_shift";
+    //   #binding-cells = <2>;
+    //   tapping-term-ms = <180>;
+    //   flavor = "tap-preferred";
+    //   bindings = <&sh_shift>, <&skq_shift>;
+    // };
+
+    // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
+    SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_RSFT)
 
     // SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
     // SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
