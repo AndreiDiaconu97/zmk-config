@@ -82,6 +82,7 @@
     SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
     SHIFTED_SYMBOL(sh_bspc,    &kp BACKSPACE, &kp DELETE)
     SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
+    SHIFTED_SYMBOL(sh_shift,   NKQ(LSHIFT), &kp caps_word)
 
     // SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
     // SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
