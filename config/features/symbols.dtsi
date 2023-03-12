@@ -90,8 +90,7 @@
     SHIFTED_SYMBOL(sh_comma,   &kp COMMA, &kp SEMICOLON)
     SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
     SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
-
-    SHIFTED_SYMBOL(sh_shift,   &skq LSHIFT, &kp caps_word)
+    SHIFTED_SYMBOL(sh_shift,   &skq LSHIFT, &caps_word)
     // skq_shift: skq_shift {
     //   compatible = "zmk,behavior-sticky-key";
     //   label = "skq_shift";
