@@ -80,7 +80,7 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&kp>, <&kp>;
+      bindings = <&sk>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
     };
     hmr: homerow_mods_r { // Urob // "timer-less" 
@@ -92,7 +92,7 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&kp>, <&kp>;
+      bindings = <&sk>, <&kp>;
       hold-trigger-key-positions = <KEYS_L THUMBS>;
     };
     #define HRML(k1,k2,k3,k4) &hml LGUI   k1  &hml LALT  k2  &hml LCTRL k3  &hml LSHIFT k4
