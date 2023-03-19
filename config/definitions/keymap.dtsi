@@ -1,6 +1,6 @@
 #include "config.h"
 #include "../features/behaviors.dtsi"
-// #include "../features/combos.dtsi"
+#include "../features/combos.dtsi"
 #include "../features/symbols.dtsi"
 #include "../features/mouse.dtsi"
 
@@ -55,7 +55,7 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp CAPS      &kp HOME      &kp UP        &kp END       &kp PG_UP         &kp INS       XXX           XXX           XXX           XXX
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp TAB       &kp LEFT      &kp DOWN      &kp RIGHT     XXX               &to MOUSE      NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
+             &kp TAB       &kp LEFT      &kp DOWN      &kp RIGHT     XXX               XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &tog FUNCT    &kp COPY      &kp CUT       &kp PASTE     &kp PG_DN         &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
