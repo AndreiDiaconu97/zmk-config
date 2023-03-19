@@ -28,8 +28,8 @@
     //// OTHER ////////////////////
     COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS) // REVIEW
     COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
-    ZMK_COMBO(mouse_on,    &to MOUSE,            LTR LTI,        ALL,      COMBO_TERM_FAST)
-    ZMK_COMBO(mouse_off,   &tog MOUSE,           LHR LHM LHI,    MOUSE,    COMBO_TERM_FAST)
+    ZMK_COMBO(mouse_on,    &to MOUSE,            LTR LTI,        ALL,      COMBO_30_MS)
+    ZMK_COMBO(mouse_off,   &tog MOUSE,           LHR LHM LHI,    MOUSE,    COMBO_30_MS)
     // COMBO(fun_layer ,      &mo FUNCT,            TLL TRR,        ALL,      50)
 
     //// LEFT HOMEROW COMBO MODS ////////////////////
