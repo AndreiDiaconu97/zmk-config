@@ -60,9 +60,9 @@
       compatible = "zmk,behavior-hold-tap"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <2>; \
-      tapping-term-ms = <0>; \
-      flavor = "hold-preferred"; \
-      retro-tap; \
+      tapping-term-ms = <200>; \
+      quick-tap-ms = <175>; \
+      flavor = "balanced"; \
       bindings = <&mo>, <BINDINGS>; \
     };
 
@@ -149,7 +149,7 @@
 
 
     LAYERTAP_SYMBOL(lt_bspc,   &sh_bspc) // TODO: &to layer on hold? (eg. &mo NAV on hold, BSPC on tap, &to NAV on tap-hold). Remember to set quick-tap-ms to 0, so that tap-hold does not simply repeats tap.
-    
+
     SYMBOL(mc_r,            &kp R)
     LAYERTAP_SYMBOL(lt_r,   &mc_r)
   };
