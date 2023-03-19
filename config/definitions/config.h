@@ -8,7 +8,7 @@
 #define HUB 6
 #define BLT 7
 #define GAME 8
-#define NPD 9
+#define MOUSE 9
 
 #define NO_GAME BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT NPD
 #define ALL 0xff
@@ -41,7 +41,7 @@
   │ LHP LHR LHM LHI LHC │ │ RHC RHI RHM RHR RHP │
   │ LBP LBR LBM LBI LBC │ │ RBC RBI RBM RBR RBP │
   ╰───────────╮ TLL TLR │ │ TRL TRR ╭───────────╯
-              ╰─────────╯ ╰─────────╯ 
+              ╰─────────╯ ╰─────────╯
   ╭─────────────────────╮ ╭─────────────────────╮
   │  0   1   2   3   4  │ │   5   6   7   8   9 │
   │ 10  11  12  13  14  │ │  15  16  17  18  19 │
@@ -57,7 +57,7 @@
 #define LTR 1
 #define LTM 2
 #define LTI 3
-#define LTC 4  
+#define LTC 4
 
 #define RTC 5   // right-top row
 #define RTI 6
