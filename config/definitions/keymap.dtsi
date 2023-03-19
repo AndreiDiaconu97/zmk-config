@@ -1,6 +1,6 @@
 #include "config.h"
 #include "../features/behaviors.dtsi"
-#include "../features/combos.dtsi"
+// #include "../features/combos.dtsi"
 #include "../features/symbols.dtsi"
 #include "../features/mouse.dtsi"
 
