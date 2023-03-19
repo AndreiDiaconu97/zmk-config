@@ -2,7 +2,7 @@
 
 Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 
-![my_keymap(1)](https://user-images.githubusercontent.com/28645381/224492231-590a4db8-da65-44bd-be89-34e6bbdae36d.svg)
+![my_keymap(2)](https://user-images.githubusercontent.com/28645381/226204861-b71b4405-acb4-42bf-9881-6832da451a20.svg)
 
 ## ToDo by Priority
 - [ ] rearrange symbols, and maybe move the most used ones on easy combos
@@ -28,7 +28,7 @@ Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 	- Strong inspiration for **Extend layer**, but with navigation cluster on the left side
 	- Pretty much copied the function layer.
 - [Robert Urob](https://github.com/urob/zmk-config)
-	- Awesome **timeless homerow mods approach**, which made me swicth fron Callum style mods, and thus free many keys.
+	- Awesome **timeless homerow mods approach**, which made me switch fron Callum style mods, and thus free many keys.
 	- convinced me to use **combos** (especially for esc, enter, and brackets)
 	- **mod-morp** some keys like comma and dot
 	- He mentions that ZMK does not yet support **tap-only combos** ([#544](https://github.com/zmkfirmware/zmk/issues/544)), that is, in the official ZMK implementation holding a set of keys in the homerow in order to trigger multiple mods, would instead trigger a combo if is assigned to that exact set of keys. His workaround is to press the needed mods sequentially so that the combo does not trigger.
