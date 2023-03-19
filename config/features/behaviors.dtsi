@@ -80,7 +80,7 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&sk>, <&kp>;
+      bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
     };
     hmr: homerow_mods_r { // Urob // "timer-less" 
@@ -92,7 +92,7 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&sk>, <&kp>;
+      bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <KEYS_L THUMBS>;
     };
     #define HRML(k1,k2,k3,k4) &hml LGUI   k1  &hml LALT  k2  &hml LCTRL k3  &hml LSHIFT k4
@@ -146,14 +146,13 @@
 
     // OTHER //////////////////////////////////////////////////////////////
 
-    caps_dance: caps_dance {
-      compatible = "zmk,behavior-tap-dance";
-      label = "CAPS_DANCE";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&caps_word>, <&kp CAPS>;
-    };
-    #define MO_SL(key) &mo_sl key key
+    // caps_dance: caps_dance {
+    //   compatible = "zmk,behavior-tap-dance";
+    //   label = "CAPS_DANCE";
+    //   #binding-cells = <0>;
+    //   tapping-term-ms = <200>;
+    //   bindings = <&caps_word>, <&kp CAPS>;
+    // };
 
     skq: sticky_key_quick_release { // Callum // used for sticky SHIFT
       compatible = "zmk,behavior-sticky-key";

@@ -45,7 +45,7 @@
       label = "HOMEROW_MOD"; \
       #binding-cells = <2>; \
       flavor = "balanced"; \
-      tapping-term-ms = <180>; \
+      tapping-term-ms = <200>; \
       quick-tap-ms = <175>; \
       global-quick-tap-ms = <150>; \
       hold-trigger-on-release; \
@@ -91,22 +91,15 @@
     SHIFTED_SYMBOL(sh_dot,     &kp DOT, &kp COLON)
     SHIFTED_SYMBOL(sh_slash,   &kp SLASH, &kp BSLH)
     SHIFTED_SYMBOL(sh_shift,   &skq LSHIFT, &caps_word)
-    // skq_shift: skq_shift {
-    //   compatible = "zmk,behavior-sticky-key";
-    //   label = "skq_shift";
-    //   #binding-cells = <1>;
-    //   bindings = <&sh_shift>;
-    //   release-after-ms = <1000>;
-    //   quick-release; // no double capitalization when rolling keys
-    // };
-    // nkq_shift: nkq_shift {
-    //   compatible = "zmk,behavior-hold-tap";
-    //   label = "nkq_shift";
-    //   #binding-cells = <2>;
-    //   tapping-term-ms = <180>;
-    //   flavor = "tap-preferred";
-    //   bindings = <&sh_shift>, <&skq_shift>;
-    // };
+    nkq_shift: nkq_shift {
+      compatible = "zmk,behavior-hold-tap";
+      label = "nkq_shift";
+      #binding-cells = <2>;
+      tapping-term-ms = <180>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&sh_shift>;
+    };
+    #define NKQ_SHIFT &nkq_shift LSHIFT 0 // TODO thumb shift to RSHIFT, caps on double tap?
 
     // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
     SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_RSFT)
@@ -156,7 +149,7 @@
 
 
     LAYERTAP_SYMBOL(lt_bspc,   &sh_bspc) // TODO: &to layer on hold? (eg. &mo NAV on hold, BSPC on tap, &to NAV on tap-hold). Remember to set quick-tap-ms to 0, so that tap-hold does not simply repeats tap.
-    
+
     SYMBOL(mc_r,            &kp R)
     LAYERTAP_SYMBOL(lt_r,   &mc_r)
   };
