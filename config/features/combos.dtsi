@@ -26,7 +26,7 @@
     compatible = "zmk,combos";
 
     // //// OTHER ////////////////////
-    // COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS)
+    COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS)
     COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
     COMBO(mouse_on,        &to MOUSE,            LTR LTI,        ALL,      COMBO_30_MS)
     COMBO(mouse_off,       &tog MOUSE,           LHR LHM LHI,    MOUSE,    COMBO_30_MS)
