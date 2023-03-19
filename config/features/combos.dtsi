@@ -28,8 +28,8 @@
     //// OTHER ////////////////////
     COMBO(compose_key,     &kp K_CMENU,          LHC TLL,        NO_GAME,  COMBO_30_MS) // REVIEW
     COMBO(to_hub,          &to HUB,              LBI LBC TLR,    ALL,      COMBO_30_MS)
-    COMBO(mouse_on,        &to MOUSE,            LTR LTI,        ALL,      COMBO_30_MS)
-    COMBO(mouse_off,       &tog MOUSE,           LHR LHM LHI,    MOUSE,    COMBO_30_MS)
+    // COMBO(mouse_on,        &to MOUSE,            LTR LTI,        ALL,      COMBO_30_MS)
+    // COMBO(mouse_off,       &tog MOUSE,           LHR LHM LHI,    MOUSE,    COMBO_30_MS)
     // COMBO(fun_layer ,      &mo FUNCT,            TLL TRR,        ALL,      50)
 
     //// LEFT HOMEROW COMBO MODS ////////////////////
@@ -51,7 +51,7 @@
 
     //// LEFT HAND ////////////////////
     COMBO(esc,   &hml LA(LCTRL)   ESC,        LHR LHM,  NO_GAME, COMBO_20_MS)
-    // COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME, COMBO_20_MS)
+    COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME, COMBO_20_MS)
     // COMBO(cut,   &kp CUT,       LBR LBI,   NO_GAME, COMBO_30_MS)
     // COMBO(copy,  &kp COPY,      LBR LBM,   NO_GAME, COMBO_20_MS)
     // COMBO(paste, &kp PASTE,     LBM LBI,   NO_GAME, COMBO_20_MS)
