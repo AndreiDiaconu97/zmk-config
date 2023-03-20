@@ -52,6 +52,8 @@
     // //// LEFT HAND ////////////////////
     COMBO(esc,   &hml LA(LCTRL)   ESC,        LHR LHM,  NO_GAME, COMBO_20_MS)
     COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME, COMBO_20_MS)
+    COMBO(save,  &kp LC(S),                   LHR LHI,  NO_GAME, COMBO_20_MS)
+    COMBO(find,  &kp LC(F),                   LTR LTM,  NO_GAME, COMBO_20_MS)
     // // COMBO(cut,   &kp CUT,       LBR LBI,   NO_GAME, COMBO_30_MS)
     // // COMBO(copy,  &kp COPY,      LBR LBM,   NO_GAME, COMBO_20_MS)
     // // COMBO(paste, &kp PASTE,     LBM LBI,   NO_GAME, COMBO_20_MS)
