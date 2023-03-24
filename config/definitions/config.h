@@ -32,8 +32,8 @@
 // };
 
 &caps_word {
-    /delete-property/ ignore-modifiers;
-    continue-list = <UNDERSCORE MINUS BSPC DEL N1 N2 N3 N4 N5 N6 N7 N8 N9 N0>;
+  /delete-property/ ignore-modifiers;
+  continue-list = <UNDERSCORE MINUS BSPC DEL N1 N2 N3 N4 N5 N6 N7 N8 N9 N0>;
 };
 
 /*                KEY POSITIONS
