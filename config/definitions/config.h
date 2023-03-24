@@ -8,9 +8,10 @@
 #define HUB 6
 #define BLT 7
 #define GAME 8
-#define MOUSE 9
+#define GAMET 9
+#define MOUSE 10
 
-#define NO_GAME BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT
+#define NO_GAME_AND_MOUSE BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT GAMET
 #define ALL 0xff
 
 // Keys
