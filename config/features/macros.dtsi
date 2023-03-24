@@ -1,3 +1,5 @@
+#include <dt-bindings/zmk/dynamic-macros.h>
+
 #define MACRO_TAP_TERM 10
 #define MACRO_WAIT_TERM 10
 

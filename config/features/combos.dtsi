@@ -50,10 +50,11 @@
     // // COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), LHP LHR LHM LHI TLL, NO_GAME_AND_MOUSE, COMBO_30_MS)
 
     // //// LEFT HAND ////////////////////
-    COMBO(esc,   &hml LA(LCTRL)   ESC,        LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    // COMBO(find,  &kp LC(F),                   LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    COMBO(esc,   &kp ESC,                     LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    COMBO(tab,   &hml LA(LCTRL)   TAB,        LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(save,  &hml LA(LSHIFT)  LC(S),      LHR LHI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    COMBO(find,  &kp LC(F),                   LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(cut,   &kp CUT,                     LBR LBI,  NO_GAME_AND_MOUSE, COMBO_30_MS)
     COMBO(copy,  &kp COPY,                    LBR LBM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(paste, &kp PASTE,                   LBM LBI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
