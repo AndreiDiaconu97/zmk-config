@@ -44,6 +44,15 @@
       bindings = <&macro_tap SYMBOLS>; \
     };
 
+  #define TAPDANCE(NAME, TAPHOLD, DTAP, TTAP) \
+    NAME: NAME { \
+    compatible = "zmk,behavior-tap-dance"; \
+    label = ZMK_MACRO_STRINGIFY(NAME); \
+    #binding-cells = <0>; \
+    tapping-term-ms = <TD_TAPPING_TERM>; \
+    bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+  };
+
   #define TURBO(NAME, BINDINGS, WAIT_MS) \
     NAME: NAME { \
     compatible = "zmk,behavior-turbo-key"; \
@@ -56,7 +65,8 @@
   // toggle-term-ms = <50>; \
 
   MACRO(mc_lclick, &mkp MB1)
-  TURBO(tu_lclick, &mc_lclick, 10)
+  // TAPDANCE(td_lclick, &mkp MB1, &mc_lclick, &none)
+  TURBO(tu_lclick, &kp A, 10)
 };
 
 #define U_BTN1 &tu_lclick
