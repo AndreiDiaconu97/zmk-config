@@ -34,7 +34,7 @@
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
 / {
-  #define MACRO_SYMBOL(NAME, SYMBOLS) \
+  #define MACRO(NAME, SYMBOLS) \
     NAME: NAME { \
       compatible = "zmk,behavior-macro"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
@@ -44,20 +44,22 @@
       bindings = <&macro_tap SYMBOLS>; \
     };
 
-  #define TAPDANCE_SYMBOL(NAME, TAPHOLD, DTAP, TTAP) \
+  #define TURBO(NAME, BINDINGS, WAIT_MS) \
     NAME: NAME { \
-    compatible = "zmk,behavior-tap-dance"; \
+    compatible = "zmk,behavior-turbo-key"; \
     label = ZMK_MACRO_STRINGIFY(NAME); \
     #binding-cells = <0>; \
     tapping-term-ms = <TD_TAPPING_TERM>; \
-    bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+    wait-ms = <WAIT_MS>; \
+    bindings = <BINDINGS>; \
   };
+  // toggle-term-ms = <50>; \
 
-  MACRO_SYMBOL(mc_lclick, &mkp MB1)
-  // TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &mc_lclick, &none)
+  MACRO(mc_lclick, &mkp MB1)
+  TURBO(tu_lclick, &mc_lclick, 10)
 };
 
-#define U_BTN1 &mc_lclick
+#define U_BTN1 &tu_lclick
 #define U_BTN2 &mkp MB2
 #define U_BTN3 &mkp MB3
 #define U_MS_U &mmv MOVE_UP
