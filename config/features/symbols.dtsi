@@ -81,7 +81,7 @@
       compatible = "zmk,behavior-tap-dance"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <0>; \
-      tapping-term-ms = <TD_TAPPING_TERM>; \
+      tapping-term-ms = <200>; \
       bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
     };
 

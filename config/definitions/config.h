@@ -1,17 +1,16 @@
 // Layers
 #define BASE 0
 #define QWERTY 1
-#define HANDS_TI 2
-#define NAV 3
-#define SYM_NUM 4
-#define FUNCT 5
-#define HUB 6
-#define BLT 7
-#define GAME 8
-#define GAMET 9
-#define MOUSE 10
+#define NAV 2
+#define SYM_NUM 3
+#define FUNCT 4
+#define HUB 5
+#define BLT 6
+#define GAME 7
+#define GAMET 8
+#define MOUSE 9
 
-#define NO_GAME_AND_MOUSE BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT GAMET
+#define NO_GAME_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAMET
 #define ALL 0xff
 
 // Keys
