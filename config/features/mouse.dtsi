@@ -12,7 +12,7 @@
   delay-ms = <0>;                   // 10
 };
 
-#define U_MOUSE_MOVE_MAX 1500       // 600
+#define U_MOUSE_MOVE_MAX 1700       // 600
 #define U_MOUSE_SCROLL_MAX 50       // 10
 
 #undef MOVE_UP
@@ -33,7 +33,31 @@
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
-#define U_BTN1 &mkp MB1
+/ {
+  #define MACRO_SYMBOL(NAME, SYMBOLS) \
+    NAME: NAME { \
+      compatible = "zmk,behavior-macro"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      wait-ms = <10>; \
+      tap-ms = <10>; \
+      bindings = <&macro_tap SYMBOLS>; \
+    };
+
+  #define TAPDANCE_SYMBOL(NAME, TAPHOLD, DTAP, TTAP) \
+    NAME: NAME { \
+    compatible = "zmk,behavior-tap-dance"; \
+    label = ZMK_MACRO_STRINGIFY(NAME); \
+    #binding-cells = <0>; \
+    tapping-term-ms = <TD_TAPPING_TERM>; \
+    bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+  };
+
+  MACRO_SYMBOL(mc_lclick, &mkp MB1)
+  TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &mc_lclick, &none)
+};
+
+#define U_BTN1 &td_lclick
 #define U_BTN2 &mkp MB2
 #define U_BTN3 &mkp MB3
 #define U_MS_U &mmv MOVE_UP
