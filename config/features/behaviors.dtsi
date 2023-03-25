@@ -172,6 +172,18 @@
     };
     #define NKQ(key) &nkq key key
 
+    #define TURBO_SYMBOL(NAME, BINDINGS, WAIT_MS) \
+      NAME: NAME { \
+      compatible = "zmk,behavior-turbo-key"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      tapping-term-ms = <TD_TAPPING_TERM>; \
+      wait-ms = <WAIT_MS>; \
+      bindings = <BINDINGS>; \
+    };
+    TURBO_SYMBOL(tu_star, &mc_star, 10)
+
+
 
     // OLD ////////////////////////////////////////////////////////////////
 

@@ -65,11 +65,11 @@
   // toggle-term-ms = <50>; \
 
   MACRO_SYMBOL(mc_lclick, &mkp MB1)
-  TURBO_SYMBOL(tu_lclick, &kp A, 10)
+  // TURBO_SYMBOL(tu_lclick, &kp A, 10)
   // TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &tu_lclick, &none)
 };
 
-#define U_BTN1 &tu_lclick
+#define U_BTN1 &mc_lclick
 #define U_BTN2 &mkp MB2
 #define U_BTN3 &mkp MB3
 #define U_MS_U &mmv MOVE_UP
