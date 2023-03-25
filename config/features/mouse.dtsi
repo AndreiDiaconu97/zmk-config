@@ -54,7 +54,7 @@
   };
 
   MACRO_SYMBOL(mc_lclick, &mkp MB1)
-  TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &mc_lclick, &none)
+  TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &mkp MB1, &none)
 };
 
 #define U_BTN1 &td_lclick
