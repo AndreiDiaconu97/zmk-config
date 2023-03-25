@@ -177,19 +177,10 @@
       compatible = "zmk,behavior-turbo-key"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <0>; \
-      tapping-term-ms = <TD_TAPPING_TERM>; \
-      wait-ms = <WAIT_MS>; \
       bindings = <BINDINGS>; \
+      wait-ms = <WAIT_MS>; \
     };
-    // TURBO_SYMBOL(tu_star, &mc_star, 10)
-    turbo_A: turbo_A {
-      compatible = "zmk,behavior-turbo-key";
-      label = "TURBO_A";
-      #binding-cells = <0>;
-      bindings = <&kp A>;
-      wait-ms = <5000>;
-    };
-
+    TURBO_SYMBOL(tu_star, &mc_star, 10)
 
 
     // OLD ////////////////////////////////////////////////////////////////
