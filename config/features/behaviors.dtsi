@@ -172,17 +172,6 @@
     };
     #define NKQ(key) &nkq key key
 
-    #define TURBO_SYMBOL(NAME, BINDINGS, WAIT_MS) \
-      NAME: NAME { \
-      compatible = "zmk,behavior-turbo-key"; \
-      label = ZMK_MACRO_STRINGIFY(NAME); \
-      #binding-cells = <0>; \
-      bindings = <BINDINGS>; \
-      wait-ms = <WAIT_MS>; \
-    };
-    TURBO_SYMBOL(tu_star, &mc_star, 10)
-
-
     // OLD ////////////////////////////////////////////////////////////////
 
     // tap for key, tap-hold to change layer, can be useful if needing extra layer buttons (eg, tap-hold Q to go to BASE layer)
