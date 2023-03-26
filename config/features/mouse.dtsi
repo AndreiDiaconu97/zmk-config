@@ -64,7 +64,7 @@
     // toggle-term-ms = <50>; \
 
   MACRO_SYMBOL(mc_lclick, &mkp MB1)
-  TURBO_SYMBOL(tu_lclick, &mc_lclick, 34)
+  TURBO_SYMBOL(tu_lclick, &mc_lclick, 35)
   TAPDANCE_SYMBOL(td_lclick, &mkp MB1, &tu_lclick, &none)
 };
 
