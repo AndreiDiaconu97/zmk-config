@@ -46,22 +46,22 @@
 
   #define TAPDANCE_SYMBOL(NAME, TAPHOLD, DTAP, TTAP) \
     NAME: NAME { \
-    compatible = "zmk,behavior-tap-dance"; \
-    label = ZMK_MACRO_STRINGIFY(NAME); \
-    #binding-cells = <0>; \
-    tapping-term-ms = <200>; \
-    bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
-  };
+      compatible = "zmk,behavior-tap-dance"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      tapping-term-ms = <200>; \
+      bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+    };
 
   #define TURBO_SYMBOL(NAME, BINDINGS, WAIT_MS) \
     NAME: NAME { \
-    compatible = "zmk,behavior-turbo-key"; \
-    label = ZMK_MACRO_STRINGIFY(NAME); \
-    #binding-cells = <0>; \
-    wait-ms = <WAIT_MS>; \
-    bindings = <BINDINGS>; \
-  };
-  // toggle-term-ms = <50>; \
+      compatible = "zmk,behavior-turbo-key"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      wait-ms = <WAIT_MS>; \
+      bindings = <BINDINGS>; \
+    };
+    // toggle-term-ms = <50>; \
 
   MACRO_SYMBOL(mc_lclick, &mkp MB1)
   TURBO_SYMBOL(tu_lclick, &mc_lclick, 10)

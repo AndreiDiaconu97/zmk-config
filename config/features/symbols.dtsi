@@ -28,7 +28,7 @@
     };
 
   #define TAPHOLD_SYMBOL(NAME, TAP, HOLD) \
-     NAME: NAME { \
+    NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <2>; \
@@ -40,7 +40,7 @@
     };
 
   #define MODTAP_SYMBOL(NAME, BINDINGS, HOLD_TRIGGER_KEYS) \
-     NAME: NAME { \
+    NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
       label = "HOMEROW_MOD"; \
       #binding-cells = <2>; \
@@ -56,7 +56,7 @@
   #define HRMR_MT(k1,k2,k3,k4) &k1 RSHIFT 0  &k2 RCTRL 0  &k3 RALT  0  &k4 RGUI   0
 
   #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
-     NAME: NAME { \
+    NAME: NAME { \
       compatible = "zmk,behavior-hold-tap"; \
       label = ZMK_MACRO_STRINGIFY(NAME); \
       #binding-cells = <2>; \
@@ -83,6 +83,15 @@
       #binding-cells = <0>; \
       tapping-term-ms = <200>; \
       bindings = <TAPHOLD>, <DTAP>, <TTAP>; \
+    };
+
+  #define TURBO_SYMBOL(NAME, BINDINGS, WAIT_MS) \
+    NAME: NAME { \
+      compatible = "zmk,behavior-turbo-key"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      wait-ms = <WAIT_MS>; \
+      bindings = <BINDINGS>; \
     };
 
   symbols {
