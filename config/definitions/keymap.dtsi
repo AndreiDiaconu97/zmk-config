@@ -4,6 +4,9 @@
 #include "../features/combos.dtsi"
 #include "../features/symbols.dtsi"
 #include "../features/macros.dtsi"
+#if __has_include("../secret.dtsi")
+#include "../secret.dtsi"
+#endif
 
 / {
   keymap {
