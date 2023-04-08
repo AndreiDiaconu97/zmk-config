@@ -3,11 +3,11 @@
 #define QWERTY 1
 #define NAV 2
 #define SYM_NUM 3
-#define FUNCT 4
-#define HUB 5
-#define BLT 6
-#define GAME 7
-#define GAMET 8
+#define HUB 4
+#define BLT 5
+#define GAME 6
+#define GAMET 7
+#define FUNCT 8
 #define MOUSE 9
 
 #define NO_GAME_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAMET
