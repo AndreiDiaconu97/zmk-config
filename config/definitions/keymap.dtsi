@@ -4,6 +4,8 @@
 #include "../features/combos.dtsi"
 #include "../features/symbols.dtsi"
 #include "../features/macros.dtsi"
+#include "../features/leader.dtsi"
+
 #if __has_include("../secret.dtsi")
 #include "../secret.dtsi"
 #endif
@@ -45,9 +47,9 @@
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
              &kp PG_UP     &kp HOME      &kp UP        &kp END       XXX               &kp INS       XXX           XXX           XXX           XXX
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &kp PG_DN     &kp LEFT      &kp DOWN      &kp RIGHT     &kp CAPS          XXX           NK(LSHIFT)     NK(LCTRL)    NK(LALT)      NK(LGUI)
+             &kp PG_DN     &kp LEFT      &kp DOWN      &kp RIGHT     &kp CAPS          XXX           NK(RSHIFT)    NK(RCTRL)     NK(RALT)      NK(RGUI)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             XXX           &kp TAB       &kp LS(TAB)   &key_repeat   XXX               &kp PSCRN     XXX           XXX           XXX           XXX
+             &leader       &kp LS(TAB)   &kp TAB       &key_repeat   XXX               &kp PSCRN     XXX           XXX           XXX           XXX
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        ___           XXX               XXX           XXX
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
