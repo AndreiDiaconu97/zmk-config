@@ -1,16 +1,20 @@
 // Layers
 #define BASE 0
 #define QWERTY 1
-#define HANDS_TI 2
-#define NAV 3
-#define SYM_NUM 4
-#define FUNCT 5
-#define HUB 6
-#define BLT 7
-#define GAME 8
+#define NAV 2
+#define HUB 3
+#define BLT 4
+#define GAME 5
+#define GAMET 6
+#define SYM_NUM 7
+#define FUNCT 8
 #define MOUSE 9
 
-#define NO_GAME BASE QWERTY HANDS_TI NAV SYM_NUM FUNCT HUB BLT
+#define NO_GAME_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAMET
+#define NO_GAME_AND_NO_GAMET_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT
+#define NO_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAME
+#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT HUB BLT MOUSE
+#define NO_FUNCT BASE QWERTY NAV SYM_NUM HUB BLT GAME MOUSE
 #define ALL 0xff
 
 // Keys
@@ -25,13 +29,9 @@
 // #define NEXT_TAB RC(TAB)
 // #define FWRD LG(RBKT)
 
-// &mmv {
-//   time-to-max-speed-ms = <680>;
-//   acceleration-exponent=<2>;
-// };
-
 &caps_word {
-    continue-list = <UNDERSCORE MINUS BSPC DEL N1 N2 N3 N4 N5 N6 N7 N8 N9 N0>;
+  /delete-property/ ignore-modifiers;
+  continue-list = <UNDERSCORE MINUS BSPC DEL N1 N2 N3 N4 N5 N6 N7 N8 N9 N0>;
 };
 
 /*                KEY POSITIONS
