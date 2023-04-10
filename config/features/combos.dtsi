@@ -37,7 +37,27 @@
     COMBO(funct_off,       &tog FUNCT,           LBR LHM,        FUNCT,              COMBO_20_MS)
     COMBO(game_off,        &tog GAME,            LBR LHM,        GAME,               COMBO_20_MS)
     COMBO(gamet_off,       &tog_gametype,        LHM LHI,        GAMET,              COMBO_20_MS)
-    // // COMBO(fun_layer ,      &mo FUNCT,            TLL TRR,        ALL,      50)
+
+    // //// LEFT HAND ////////////////////
+    COMBO(esc,   &kp ESC,                     LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    // COMBO(tab,   &hml LA(LCTRL)   TAB,        LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME_AND_NO_GAMET_AND_MOUSE, COMBO_20_MS)
+    // COMBO(save,  &hml LA(LSHIFT)  LC(S),      LHR LHI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    COMBO(cut,   &kp CUT,                     LBR LBI,  NO_GAME_AND_MOUSE, COMBO_30_MS)
+    COMBO(copy,  &kp COPY,                    LBR LBM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    COMBO(paste, &kp PASTE,                   LBM LBI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+
+    //// RIGHT HAND ////////////////////
+    COMBO(lbrc,  &kp LBRC,              RTI RTM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+    COMBO(rbrc,  &kp RBRC,              RTM RTR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+    COMBO(lpar,  &hmr LC(LSHIFT) LPAR,  RHI RHM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+    COMBO(rpar,  &hmr LA(LCTRL)  RPAR,  RHM RHR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+    COMBO(lbrk,  &kp LBKT,              RBI RBM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+    COMBO(rbrk,  &kp RBKT,              RBM RBR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
+
+    //// GAME ////////////////////
+    COMBO(game_esc,   &kp ESC,      LTP LTR,      GAME, COMBO_20_MS)
+    COMBO(game_enter, &kp RETURN,   LHM LHI TLR,  GAME, COMBO_20_MS)
 
     // //// LEFT HOMEROW COMBO MODS ////////////////////
     // // COMBO_STICKY(gui,                NK(LGUI),               LHP TLL,             NO_GAME_AND_MOUSE, COMBO_30_MS)
@@ -55,48 +75,5 @@
     // // COMBO_STICKY(gui_ctrl_shift,     NK(LG(LC(LSHIFT))),     LHP LHM LHI TLL,     NO_GAME_AND_MOUSE, COMBO_30_MS)
     // // COMBO_STICKY(alt_ctrl_shift,     NK(LA(LC(LSHIFT))),     LHR LHM LHI TLL,     NO_GAME_AND_MOUSE, COMBO_30_MS)
     // // COMBO_STICKY(gui_alt_ctrl_shift, NK(LG(LA(LC(LSHIFT)))), LHP LHR LHM LHI TLL, NO_GAME_AND_MOUSE, COMBO_30_MS)
-
-    // //// LEFT HAND ////////////////////
-    COMBO(esc,   &kp ESC,                     LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    COMBO(tab,   &hml LA(LCTRL)   TAB,        LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME_AND_NO_GAMET_AND_MOUSE, COMBO_20_MS)
-    // COMBO(save,  &hml LA(LSHIFT)  LC(S),      LHR LHI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    // COMBO(cut,   &kp CUT,                     LBR LBI,  NO_GAME_AND_MOUSE, COMBO_30_MS)
-    // COMBO(copy,  &kp COPY,                    LBR LBM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    // COMBO(paste, &kp PASTE,                   LBM LBI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-
-    //// RIGHT HAND ////////////////////
-    COMBO(lbrc,  &kp LBRC,              RTI RTM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-    COMBO(rbrc,  &kp RBRC,              RTM RTR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-    COMBO(lpar,  &hmr LC(LSHIFT) LPAR,  RHI RHM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-    COMBO(rpar,  &hmr LA(LCTRL)  RPAR,  RHM RHR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-    COMBO(lbrk,  &kp LBKT,              RBI RBM,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-    COMBO(rbrk,  &kp RBKT,              RBM RBR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
-
-    //// GAME ////////////////////
-    COMBO(game_esc,   &kp ESC,      LTP LTR,      GAME, COMBO_20_MS)
-    COMBO(game_enter, &kp RETURN,   LHM LHI TLR,  GAME, COMBO_20_MS)
-
-  //   combo_game {
-  //     timeout-ms = <30>;
-  //     key-positions = <LTM LTI LTC RTC>;
-  //     bindings = <&to GM>;
-  //   };
-  //   combo_sys {
-  //     timeout-ms = <30>;
-  //     key-positions = <LTC RTC RTI>;
-  //     bindings = <&to SYS>;
-  //   };
-  //   combo_caps {
-  //     timeout-ms = <30>;
-  //     key-positions = <LHM LHI LHC>;
-  //     bindings = <&caps_word>;
-  //   };
-  //   lalt {
-  //     timeout-ms = <20>;
-  //     key-positions = <LHP LHR>;
-  //     bindings = <&kp LALT>;
-  //     layers = <SYS>;
-  //   };
   };
 };
