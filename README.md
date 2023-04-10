@@ -2,7 +2,7 @@
 
 Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 
-![my_keymap(3)](https://user-images.githubusercontent.com/28645381/226205035-338852ee-99b3-48f6-aa6c-d1550c71ae9e.svg)
+![my_keymap(4)](https://user-images.githubusercontent.com/28645381/230996226-c7cbf84d-432e-4702-84ad-1d3873b66430.svg)
 
 ## ToDo by Priority
 - [ ] rearrange symbols, and maybe move the most used ones on easy combos
