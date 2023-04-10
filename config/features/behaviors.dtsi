@@ -60,7 +60,7 @@
 
 / {
   behaviors { // https://github.com/zmkfirmware/zmk/tree/main/app/dts/behaviors
-  
+
     // conditional_layers {
     //   compatible = "zmk,conditional-layers";
     //   tri_layer {
@@ -71,7 +71,7 @@
 
     // homerow mods ///////////////////////////////////////////////////////
 
-    hml: homerow_mods_l { // Urob // "timer-less" 
+    hml: homerow_mods_l { // Urob // "timer-less"
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MOD_L";
       #binding-cells = <2>;
@@ -80,10 +80,10 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&kp>, <&kp>;
+      bindings = <&sk>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
     };
-    hmr: homerow_mods_r { // Urob // "timer-less" 
+    hmr: homerow_mods_r { // Urob // "timer-less"
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MOD_R";
       #binding-cells = <2>;
@@ -111,7 +111,7 @@
 
 
     // Layer-switching ////////////////////////////////////////////////////
-    
+
     // retro_mo: retro_mo_with_tap { // Callum // A hold-tap that activates without delay (like `&mo`)
     //   compatible = "zmk,behavior-hold-tap";
     //   label = "RETRO_MO_WITH_TAP";
@@ -141,7 +141,7 @@
       quick-tap-ms = <175>;
       flavor = "balanced";
       bindings = <&mo>, <&kp>;
-    }; 
+    };
 
 
     // OTHER //////////////////////////////////////////////////////////////
@@ -172,11 +172,10 @@
     };
     #define NKQ(key) &nkq key key
 
-
     // OLD ////////////////////////////////////////////////////////////////
 
     // tap for key, tap-hold to change layer, can be useful if needing extra layer buttons (eg, tap-hold Q to go to BASE layer)
-    // td_layer: tap_dance_layer { 
+    // td_layer: tap_dance_layer {
     //   compatible = "zmk,behavior-hold-tap";
     //   label = "TAPDANCE_LAYERS";
     //   #binding-cells = <2>;
