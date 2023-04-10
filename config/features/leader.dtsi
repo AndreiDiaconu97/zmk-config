@@ -1,0 +1,34 @@
+&leader {
+	timeout-ms = <500>;
+};
+
+/ {
+  #define MACRO(NAME, SYMBOLS) \
+    NAME: NAME { \
+      compatible = "zmk,behavior-macro"; \
+      label = ZMK_MACRO_STRINGIFY(NAME); \
+      #binding-cells = <0>; \
+      wait-ms = <10>; \
+      tap-ms = <10>; \
+      bindings = <&macro_tap SYMBOLS>; \
+    };
+
+	#define LEADER(NAME, KEYS, BINDINGS, LAYERS) \
+		NAME { \
+			key-positions = <KEYS>; \
+			bindings = <BINDINGS>; \
+			layers = <LAYERS>; \
+		};
+
+	macros {
+    // Vim - Select Whole Block
+		MACRO(mc_ciao, &kp C &kp I &kp A &kp O)
+	};
+
+	leader_sequences {
+		compatible = "zmk,leader-sequences";
+
+		LEADER(ld_ciao, RHC RHM, &mc_ciao, BASE)
+
+	};
+};
