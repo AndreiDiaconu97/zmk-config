@@ -9,10 +9,6 @@ Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 - [ ] find low error-prone and fast way to delete words (Ctrl+Bspc)
 	- combo? tap-dance? replace backspace?
 	- for now I'm using homerow Ctrl+Bspc, but I often get false negatives when fast typing
-- [ ] switching between permanent layers is still too clunky (especially between base and game layers)
-- [ ] experiment with macros, also try runtime macro recording
-- [ ] learn more about leader key
-- [ ] give another shot to a mouse layer
 
 ## References history
 - [Ben Vallack](https://youtube.com/c/BenVallack)
