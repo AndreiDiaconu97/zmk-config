@@ -41,7 +41,7 @@
     // //// LEFT HAND ////////////////////
     COMBO(esc,   &kp ESC,                     LTR LTM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     // COMBO(tab,   &hml LA(LCTRL)   TAB,        LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
-    COMBO(leader,&leader,                     LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
+    // COMBO(leader,&leader,                     LHR LHM,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(ret,   &hml LC(LSHIFT)  RETURN,     LHM LHI,  NO_GAME_AND_NO_GAMET_AND_MOUSE, COMBO_20_MS)
     // COMBO(save,  &hml LA(LSHIFT)  LC(S),      LHR LHI,  NO_GAME_AND_MOUSE, COMBO_20_MS)
     COMBO(cut,   &kp CUT,                     LBR LBI,  NO_GAME_AND_MOUSE, COMBO_30_MS)
