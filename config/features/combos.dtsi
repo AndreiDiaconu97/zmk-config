@@ -57,8 +57,8 @@
     COMBO(rbrk,  &kp RBKT,              RBM RBR,  BASE QWERTY SYM_NUM,  COMBO_20_MS)
 
     //// GAME ////////////////////
-    COMBO(game_esc,   &kp ESC,      LTP LTR,      GAME, COMBO_20_MS)
-    COMBO(game_enter, &kp RETURN,   LHM LHI TLR,  GAME, COMBO_20_MS)
+    COMBO(game_esc,   &kp ESC,      LHR LHM TLL,  GAME, COMBO_20_MS)
+    COMBO(game_enter, &kp RETURN,   LHM LHI TLL,  GAME, COMBO_20_MS)
 
     // //// LEFT HOMEROW COMBO MODS ////////////////////
     // // COMBO_STICKY(gui,                NK(LGUI),               LHP TLL,             NO_GAME_AND_MOUSE, COMBO_30_MS)
