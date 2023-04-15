@@ -124,15 +124,14 @@
     SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
     SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    // MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
-    // MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
-
-    // MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
-    // MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_excl,            &kp EXCL)
     SYMBOL(mc_at,              &kp AT)
