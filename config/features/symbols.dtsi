@@ -111,7 +111,7 @@
     #define NKQ_SHIFT &nkq_shift LSHIFT 0 // TODO thumb shift to RSHIFT, caps on double tap?
 
     // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
-    SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_LSFT)
+    SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_RSFT)
 
     // SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
     // SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)

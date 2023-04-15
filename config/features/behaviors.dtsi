@@ -80,7 +80,7 @@
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
-      bindings = <&sk>, <&kp>;
+      bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <KEYS_R THUMBS>;
     };
     hmr: homerow_mods_r { // Urob // "timer-less"
