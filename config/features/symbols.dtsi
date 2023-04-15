@@ -53,7 +53,7 @@
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS>; \
     };
   #define HRML_MT(k1,k2,k3,k4) &k1 LGUI   0  &k2 LALT  0  &k3 LCTRL 0  &k4 LSHIFT 0
-  #define HRMR_MT(k1,k2,k3,k4) &k1 RSHIFT 0  &k2 RCTRL 0  &k3 RALT  0  &k4 RGUI   0
+  #define HRMR_MT(k1,k2,k3,k4) &k1 0 RSHIFT  &k2 0 RCTRL  &k3 0 RALT   &k4 0 RGUI
 
   #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
     NAME: NAME { \
