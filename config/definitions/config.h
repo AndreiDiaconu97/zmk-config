@@ -1,12 +1,12 @@
 // Layers
 #define BASE 0
 #define QWERTY 1
-#define NAV 2
-#define HUB 3
-#define BLT 4
-#define GAME 5
-#define GAMET 6
-#define SYM_NUM 7
+#define HUB 2
+#define BLT 3
+#define GAME 4
+#define GAMET 5
+#define SYM_NUM 6
+#define NAV 7
 #define FUNCT 8
 #define MOUSE 9
 
