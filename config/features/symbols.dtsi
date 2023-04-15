@@ -53,7 +53,7 @@
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS>; \
     };
   #define HRML_MT(k1,k2,k3,k4) &k1 LGUI   0  &k2 LALT  0  &k3 LCTRL 0  &k4 LSHIFT 0
-  #define HRMR_MT(k1,k2,k3,k4) &k1 0 RSHIFT  &k2 0 RCTRL  &k3 0 RALT   &k4 0 RGUI
+  #define HRMR_MT(k1,k2,k3,k4) &k1 RSHIFT 0  &k2 RCTRL 0  &k3 RALT  0  &k4 RGUI   0
 
   #define LAYERTAP_SYMBOL(NAME, BINDINGS) \
     NAME: NAME { \
@@ -113,25 +113,26 @@
     // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
     SHIFTED_SYMBOL_WITH_KEEP(sh_bspc, &kp BACKSPACE, &kp DELETE, (MOD_LSFT|MOD_RSFT), MOD_RSFT)
 
-    SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
-    SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
-    SHIFTED_SYMBOL(sh_n3,      &kp N3, &kp KP_N3)
-    SHIFTED_SYMBOL(sh_n4,      &kp N4, &kp KP_N4)
-    SHIFTED_SYMBOL(sh_n5,      &kp N5, &kp KP_N5)
-    SHIFTED_SYMBOL(sh_n6,      &kp N6, &kp KP_N6)
-    SHIFTED_SYMBOL(sh_n7,      &kp N7, &kp KP_N7)
-    SHIFTED_SYMBOL(sh_n8,      &kp N8, &kp KP_N8)
-    SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
-    SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
+    // SHIFTED_SYMBOL(sh_n1,      &kp N1, &kp KP_N1)
+    // SHIFTED_SYMBOL(sh_n2,      &kp N2, &kp KP_N2)
+    // SHIFTED_SYMBOL(sh_n3,      &kp N3, &kp KP_N3)
+    // SHIFTED_SYMBOL(sh_n4,      &kp N4, &kp KP_N4)
+    // SHIFTED_SYMBOL(sh_n5,      &kp N5, &kp KP_N5)
+    // SHIFTED_SYMBOL(sh_n6,      &kp N6, &kp KP_N6)
+    // SHIFTED_SYMBOL(sh_n7,      &kp N7, &kp KP_N7)
+    // SHIFTED_SYMBOL(sh_n8,      &kp N8, &kp KP_N8)
+    // SHIFTED_SYMBOL(sh_n9,      &kp N9, &kp KP_N9)
+    // SHIFTED_SYMBOL(sh_n0,      &kp N0, &kp KP_N0)
 
-    MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
-    MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
-    MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n1,       &sh_n1, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n2,       &sh_n2, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n3,       &sh_n3, KEYS_R THUMBS)
+    // MODTAP_SYMBOL(mt_n4,       &sh_n4, KEYS_R THUMBS)
+
+    // MODTAP_SYMBOL(mt_n7,       &sh_n7, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n8,       &sh_n8, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n9,       &sh_n9, KEYS_L THUMBS)
+    // MODTAP_SYMBOL(mt_n0,       &sh_n0, KEYS_L THUMBS)
 
     SYMBOL(mc_excl,            &kp EXCL)
     SYMBOL(mc_at,              &kp AT)
