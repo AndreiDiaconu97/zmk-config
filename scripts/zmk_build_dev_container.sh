@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## REFERENCE COMMAND ##
+# west build -b nice_nano_v2 -d build/left -- -DSHIELD=cradio_left -DZMK_CONFIG="/workspaces/zmk-config/config"
+
 BOARD="nice_nano_v2"
 SHIELD="cradio"
 SIDES="left right"
@@ -12,57 +15,56 @@ LOG_DIR="${CONF_DIR}/build/logs"
 
 # Parse input arguments
 while [[ $# -gt 0 ]]; do
-    case $1 in
-        -c|--clear-cache)
-            CLEAR_CACHE="true"
-            ;;
+  case $1 in
+  -c | --clear-cache)
+    CLEAR_CACHE="true"
+    ;;
 
-        # comma or space separated list of boards (use quotes if space separated)
-        # if ommitted, will compile list of boards in build.yaml
-        -b|--board)
-            BOARD="$2"
-            shift
-            ;;
-
-        -s|--sides)
-            SIDES="$2"
-            shift
-            ;;
-
-        --conf-dir)
-            CONF_DIR="$2"
-            shift
-            ;;
-
-        --zmk-dir)
-            ZMK_DIR="$2"
-            shift
-            ;;
-
-        --out-dir)
-            OUT_DIR="$2"
-            shift
-            ;;
-
-        --log-dir)
-            LOG_DIR="$2"
-            shift
-            ;;
-
-        --)
-            WEST_OPTS=($2)
-            break
-            ;;
-
-        *)
-            echo "Unknown option $1"
-            exit 1
-            ;;
-
-    esac
+  # comma or space separated list of boards (use quotes if space separated)
+  # if ommitted, will compile list of boards in build.yaml
+  -b | --board)
+    BOARD="$2"
     shift
-done
+    ;;
 
+  -s | --sides)
+    SIDES="$2"
+    shift
+    ;;
+
+  --conf-dir)
+    CONF_DIR="$2"
+    shift
+    ;;
+
+  --zmk-dir)
+    ZMK_DIR="$2"
+    shift
+    ;;
+
+  --out-dir)
+    OUT_DIR="$2"
+    shift
+    ;;
+
+  --log-dir)
+    LOG_DIR="$2"
+    shift
+    ;;
+
+  --)
+    WEST_OPTS=($2)
+    break
+    ;;
+
+  *)
+    echo "Unknown option $1"
+    exit 1
+    ;;
+
+  esac
+  shift
+done
 
 build_board() {
   local side="$1"
@@ -73,8 +75,7 @@ build_board() {
 
   if ! west build -b "${BOARD}" -d "build/${side}" "${WEST_OPTS[@]}" \
     -- -DSHIELD="${shield}" -DZMK_CONFIG="${CONF_DIR}/config" \
-    -Wno-dev 2>&1 | tee "${logfile}"
-  then
+    -Wno-dev 2>&1 | tee "${logfile}"; then
     printf "\e[31mError: %s failed\e[0m\n" "$shield" >&2
     return 1
   fi
@@ -94,7 +95,6 @@ build_and_archive() {
   build_board "${side}"
   archive_board "${side}"
 }
-
 
 printf "\e[32mStarting ZMK build process...\e[0m\n"
 mkdir -p "${OUT_DIR}"
