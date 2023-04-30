@@ -76,7 +76,7 @@
       label = "HOMEROW_MOD_L";
       #binding-cells = <2>;
       flavor = "balanced";
-      tapping-term-ms = <180>;
+      tapping-term-ms = <280>;
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
@@ -88,7 +88,7 @@
       label = "HOMEROW_MOD_R";
       #binding-cells = <2>;
       flavor = "balanced";
-      tapping-term-ms = <180>;
+      tapping-term-ms = <280>;
       quick-tap-ms = <175>; // repeat on tap-into-hold
       global-quick-tap-ms = <150>;  // requires PR #1387
       hold-trigger-on-release;  // requires PR #1423
