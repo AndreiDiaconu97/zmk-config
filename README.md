@@ -4,6 +4,10 @@ Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 
 ![my_keymap(4)](https://user-images.githubusercontent.com/28645381/230996226-c7cbf84d-432e-4702-84ad-1d3873b66430.svg)
 
+## Building
+
+`./scripts/build.sh -h`
+
 ## ToDo by Priority
 - [ ] rearrange symbols, and maybe move the most used ones on easy combos
 - [ ] find low error-prone and fast way to delete words (Ctrl+Bspc)
