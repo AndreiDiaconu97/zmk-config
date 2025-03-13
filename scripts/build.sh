@@ -124,10 +124,19 @@ update_combo_config() {
 
   echo "Updating combo configuration settings..."
 
+  local combo_keys
+  combo_keys=$(grep -Eo '[LR][TMBLRH][01234PRMICLR]' "$config_dir/features/combos.dtsi" | sort | uniq)
+
+  # Exit if no combos are detected
+  if [[ -z "$combo_keys" ]]; then
+    echo "  No combos detected. Skipping update."
+    return
+  fi
+
   # Update maximum combos per key
   local max_combos_per_key=$(
     tail -n +1 "$config_dir/features/combos.dtsi" |
-      grep -Eo '[LR][THBLR][PRMICLR]' |
+      grep -Eo '[LR][TMBLRH][01234PRMICLR]' |
       sort | uniq -c | sort -nr |
       awk 'NR==1{print $1}'
   )
@@ -138,7 +147,7 @@ update_combo_config() {
   # Update maximum keys per combo
   local max_keys_per_combo=$(
     tail -n +1 "$config_dir/features/combos.dtsi" |
-      grep -o -n '[LR][THBLR][PRMICLR]' |
+      grep -o -n '[LR][TMBLRH][01234PRMICLR]' |
       cut -d : -f 1 | uniq -c | sort -nr |
       awk 'NR==1{print $1}'
   )
@@ -267,7 +276,7 @@ main() {
   echo "Building firmware for board:shield pairs: $(echo $BOARDS | tr '\n' ' ')"
 
   # Split entries on newlines, spaces, commas, or tabs
-  mapfile -t entries <<< "$BOARDS"
+  mapfile -t entries <<<"$BOARDS"
   for entry in "${entries[@]}"; do
     # Skip empty entries caused by multiple delimiters
     [[ -z "$entry" ]] && continue
