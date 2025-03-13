@@ -8,6 +8,14 @@ Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
 
 `./scripts/build.sh -h`
 
+## Flashing
+
+1. Go on layer having `&bootloader` (usually BLT)
+2. USB one half (best to start from Rx) -> press `&bootloader`, it will appear as storage device
+3. paste firmware (.uf2) and wait until the storage unmounts itself
+4. do the same for the other half, but copy the other side firmware
+5. done, no need to manually reboot
+
 ## ToDo by Priority
 - [ ] rearrange symbols, and maybe move the most used ones on easy combos
 - [ ] find low error-prone and fast way to delete words (Ctrl+Bspc)
