@@ -1,97 +1,86 @@
-// Layers
-#define BASE 0
-#define QWERTY 1
-#define HUB 2
-#define BLT 3
-#define GAME 4
-#define GAMET 5
-#define SYM_NUM 6
-#define NAV 7
-#define FUNCT 8
-#define MOUSE 9
+/*                KEY POSITIONS
+  ╭─────────────────────╮ ╭─────────────────────╮
+  │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+  │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+  │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+  ╰───────────╮ TL1 TL0 │ │ TR0 TR1 ╭───────────╯
+              ╰─────────╯ ╰─────────╯            */
 
-#define NO_GAME_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAMET
-#define NO_GAME_AND_GAMET_AND_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT
-#define NO_MOUSE BASE QWERTY NAV SYM_NUM FUNCT HUB BLT GAME
-#define NO_GAME BASE QWERTY NAV SYM_NUM FUNCT HUB BLT MOUSE
-#define NO_FUNCT BASE QWERTY NAV SYM_NUM HUB BLT GAME MOUSE
-#define NO_BLT BASE QWERTY NAV SYM_NUM FUNCT HUB GAME MOUSE
+#pragma once
+
+#define LT4 0
+#define LT3 1
+#define LT2 2
+#define LT1 3
+#define LT0 4
+
+#define RT0 5
+#define RT1 6
+#define RT2 7
+#define RT3 8
+#define RT4 9
+
+#define LM4 10
+#define LM3 11
+#define LM2 12
+#define LM1 13
+#define LM0 14
+
+#define RM0 15
+#define RM1 16
+#define RM2 17
+#define RM3 18
+#define RM4 19
+
+#define LB4 20
+#define LB3 21
+#define LB2 22
+#define LB1 23
+#define LB0 24
+
+#define RB0 25
+#define RB1 26
+#define RB2 27
+#define RB3 28
+#define RB4 29
+
+#define TL1 30
+#define TL0 31
+#define TR0 32
+#define TR1 33
+
+#define KEYS_L LT4 LT3 LT2 LT1 LT0 LM4 LM3 LM2 LM1 LM0 LB4 LB3 LB2 LB1 LB0
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
+#define THUMBS TL1 TL0 TR0 TR1
+#define ALL_KEYS KEYS_L KEYS_R THUMBS
+
+// Layers
+#define COLEMAK 0
+#define QWERTY 1
+#define SYM_NUM 2
+#define NAV 3
+#define FUNCT 4
+#define BLT 5
+#define GAME 6
+//#define MOUSE 6
+
+#define TYPING COLEMAK QWERTY
 #define ALL 0xff
 
 // Keys
 #define XXX &none
 #define ___ &trans
 
-#define CUT LC(X)
-#define COPY LC(INS)
-#define PASTE LS(INS)
 // #define BACK LG(LBKT)
 // #define PREV_TAB LC(LS(TAB))
 // #define NEXT_TAB RC(TAB)
 // #define FWRD LG(RBKT)
 
-&caps_word {
-  /delete-property/ ignore-modifiers;
-  continue-list = <UNDERSCORE MINUS BSPC DEL N1 N2 N3 N4 N5 N6 N7 N8 N9 N0>;
-};
-
-/*                KEY POSITIONS
-
-  ╭─────────────────────╮ ╭─────────────────────╮
-  │ LTP LTR LTM LTI LTC │ │ RTC RTI RTM RTR RTP │
-  │ LHP LHR LHM LHI LHC │ │ RHC RHI RHM RHR RHP │
-  │ LBP LBR LBM LBI LBC │ │ RBC RBI RBM RBR RBP │
-  ╰───────────╮ TLL TLR │ │ TRL TRR ╭───────────╯
-              ╰─────────╯ ╰─────────╯
-  ╭─────────────────────╮ ╭─────────────────────╮
-  │  0   1   2   3   4  │ │   5   6   7   8   9 │
-  │ 10  11  12  13  14  │ │  15  16  17  18  19 │
-  │ 20  21  22  23  24  │ │  25  26  27  28  29 │
-  ╰───────────╮ 30  31  │ │  32  33 ╭───────────╯
-              ╰─────────╯ ╰─────────╯            */
-
-#define KEYS_L 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
-#define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
-#define THUMBS 30 31 32 33
-
-#define LTP 0   // left-top row
-#define LTR 1
-#define LTM 2
-#define LTI 3
-#define LTC 4
-
-#define RTC 5   // right-top row
-#define RTI 6
-#define RTM 7
-#define RTR 8
-#define RTP 9
-
-#define LHP 10  // left-middle row
-#define LHR 11
-#define LHM 12
-#define LHI 13
-#define LHC 14
-
-#define RHC 15  // right-middle row
-#define RHI 16
-#define RHM 17
-#define RHR 18
-#define RHP 19
-
-#define LBP 20  // left-bottom row
-#define LBR 21
-#define LBM 22
-#define LBI 23
-#define LBC 24
-
-#define RBC 25  // right-bottom row
-#define RBI 26
-#define RBM 27
-#define RBR 28
-#define RBP 29
-
-#define TLL 30 // left thumb keys
-#define TLR 31
-
-#define TRL 32  // right thumb keys
-#define TRR 33
+#include "behaviors.h"
+#include "../features/behaviors.dtsi"
+// #include "../features/mouse.dtsi"
+#include "../features/combos.dtsi"
+#include "../features/symbols.dtsi"
+#include "../features/macros.dtsi"
+// #include "../features/leader.dtsi"
+#include "keymap.dtsi"

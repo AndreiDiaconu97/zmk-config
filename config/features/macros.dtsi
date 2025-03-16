@@ -1,29 +1,18 @@
-#include <dt-bindings/zmk/dynamic-macros.h>
+/*                KEY POSITIONS
+  ╭─────────────────────╮ ╭─────────────────────╮
+  │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+  │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+  │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+  ╰───────────╮ TL1 TL0 │ │ TR0 TR1 ╭───────────╯
+              ╰─────────╯ ╰─────────╯            */
+
+//#include <dt-bindings/zmk/dynamic-macros.h>
 
 / {
-  #define MACRO_TAP_TERM 10
-  #define MACRO_WAIT_TERM 10
-
-  #define MACRO(NAME, WAIT, TAP, BINDINGS) \
-    NAME: NAME { \
-      compatible = "zmk,behavior-macro"; \
-      label = ZMK_MACRO_STRINGIFY(macro_##NAME); \
-      #binding-cells = <0>; \
-      wait-ms = <WAIT>; \
-      tap-ms = <TAP>; \
-      bindings = <BINDINGS>; \
-  };
-
-  MACRO(tog_gametype, MACRO_WAIT_TERM, MACRO_TAP_TERM, &kp RET &tog GAME &tog GAMET)
-  // MACRO(work_awake, MACRO_WAIT_TERM, MACRO_TAP_TERM, &out OUT_BLE &bt BT_SEL 2 &kp A &last_dev)
-  // MACRO(leader2, MACRO_WAIT_TERM, MACRO_TAP_TERM, &macro_press &mo NUM &macro_tap &leader &macro_release &mo NUM)
-  // MACRO(leader3, MACRO_WAIT_TERM, MACRO_TAP_TERM, &macro_press &mo NAV &macro_tap &leader &macro_release &mo NAV)
-
-  dm1: dm1 {
-    compatible = "zmk,behavior-dynamic-macro";
-    label = "dynamic-macro-1";
-    wait-ms = <10>;
-    #binding-cells = <1>;
-    // no-output;
-  };
+	macros {
+		MACRO(mc_ciao, 10, 10, <&kp C &kp I &kp A &kp O>)
+  // MACRO(leader2, 10, 10, <&macro_press &mo NUM &macro_tap &leader &macro_release &mo NUM>)
+  // MACRO(leader3, 10, 10, <&macro_press &mo NAV &macro_tap &leader &macro_release &mo NAV>)
+	};
 };
+

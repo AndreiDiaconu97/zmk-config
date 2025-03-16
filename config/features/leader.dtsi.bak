@@ -1,0 +1,26 @@
+/*                KEY POSITIONS
+  ╭─────────────────────╮ ╭─────────────────────╮
+  │ LT4 LT3 LT2 LT1 LT0 │ │ RT0 RT1 RT2 RT3 RT4 │
+  │ LM4 LM3 LM2 LM1 LM0 │ │ RM0 RM1 RM2 RM3 RM4 │
+  │ LB4 LB3 LB2 LB1 LB0 │ │ RB0 RB1 RB2 RB3 RB4 │
+  ╰───────────╮ TL1 TL0 │ │ TR0 TR1 ╭───────────╯
+              ╰─────────╯ ╰─────────╯            */
+
+&leader {
+	timeout-ms = <500>;
+};
+
+#define LEADER(NAME, KEYS, BINDINGS, LAYERS) \
+  NAME { \
+    key-positions = <KEYS>; \
+    bindings = <BINDINGS>; \
+    layers = <LAYERS>; \
+  };
+
+/ {
+	leader_sequences {
+		compatible = "zmk,leader-sequences";
+
+		LEADER(ld_ciao, RHC RHM, &mc_ciao, NAV)
+	};
+};
