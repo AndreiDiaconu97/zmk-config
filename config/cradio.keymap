@@ -3,19 +3,5 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#include "definitions/config.h"
 #include "definitions/keymap.dtsi"
-
-/* TODO
-- LAYER SWITCHING IDEAS:
-    - HOLD alpha keys (slower, but more keys available)
-        - similar alternative is TAP-HOLD
-    - press COMBOs of alphas (much faster, but have to avoid common sequences, and too much chording causes fatigue)
-- Mod-tap with no delay and retro-tap vs &lt? --> could not use &lt since is laggier
-- put as much functionality on left hand so that I can use mouse without much switching
-- find GOOD backspace position. Find fast way to delete one word
-- Do I really need dedicated right homerow mods for nav layer? It seems so...
-- find a use for double thumb combos (30 31), (32 33), (30 33), (31 32), (30 32), (31 33)
-    - hard to use with low timer
-- move GUI to lower pinkies?
-- add LEADER key (Romão put it on comma double-tap)
-*/

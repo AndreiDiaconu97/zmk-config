@@ -6,13 +6,21 @@
   ╰───────────╮ TL1 TL0 │ │ TR0 TR1 ╭───────────╯
               ╰─────────╯ ╰─────────╯            */
 
-//#include <dt-bindings/zmk/dynamic-macros.h>
-
-/ {
-	macros {
-		MACRO(mc_ciao, 10, 10, <&kp C &kp I &kp A &kp O>)
-  // MACRO(leader2, 10, 10, <&macro_press &mo NUM &macro_tap &leader &macro_release &mo NUM>)
-  // MACRO(leader3, 10, 10, <&macro_press &mo NAV &macro_tap &leader &macro_release &mo NAV>)
-	};
+&leader {
+	timeout-ms = <500>;
 };
 
+#define LEADER(NAME, KEYS, BINDINGS, LAYERS) \
+  NAME { \
+    key-positions = <KEYS>; \
+    bindings = <BINDINGS>; \
+    layers = <LAYERS>; \
+  };
+
+/ {
+	leader_sequences {
+		compatible = "zmk,leader-sequences";
+
+		LEADER(ld_ciao, RHC RHM, &mc_ciao, NAV)
+	};
+};
