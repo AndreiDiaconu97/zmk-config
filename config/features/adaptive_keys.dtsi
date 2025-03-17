@@ -1,0 +1,19 @@
+/ {
+  behaviors {
+    shift_repeat: shift-repeat {
+      compatible = "zmk,behavior-adaptive-key";
+      #binding-cells = <0>;
+      bindings = <&sk_quick LSHIFT>;
+
+      repeat {
+        trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
+        bindings = <&key_repeat>;
+        max-prior-idle-ms = <200>;
+        strict-modifiers;
+      };
+    };
+  };
+};
+
+
+
