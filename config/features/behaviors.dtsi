@@ -8,7 +8,6 @@
 
 / {
   behaviors {
-    HOLD_TAP(ht, "tap-preferred", 220, 150, 100, &kp, &kp, <ALL_KEYS>)
 
     //NOTE: HOMEROW
     HOLD_TAP(hrml, "balanced", 280, (-1), 150, &kp, &kp, <KEYS_R THUMBS>, hold-trigger-on-release;) // Urob's timerless mods
@@ -16,15 +15,19 @@
     #define HRML(k1,k2,k3,k4) &hrml LGUI   k1  &hrml LALT  k2  &hrml LCTRL k3  &hrml LSHIFT k4
     #define HRMR(k1,k2,k3,k4) &hrmr RSHIFT k1  &hrmr RCTRL k2  &hrmr RALT  k3  &hrmr RGUI   k4
 
+    HOLD_TAP(callum_mod, "tap-preferred", 180, (-1), (-1), &kp, &sk, <ALL_KEYS>) // Callum Style mods
+    #define NK(key) &callum_mod key key
+
 
     //NOTE: LAYER SWITCHING
-    HOLD_TAP(lt_bspc, "balanced", 200, 175, (-1), &mo, &sh_bspc, <ALL_KEYS>) // Layer-Tap backspace
-    #define LT_BSPC(layer) &lt_bspc layer 0
+    HOLD_TAP(lt_repeat, "balanced", 200, 175, (-1), &mo, &key_repeat, <ALL_KEYS>) // Layer-Tap + key_repeat
+    #define LT_REPEAT(layer) &lt_repeat layer 0
 
     HOLD_TAP(mo_sl, "tap-preferred", 180, 200, (-1), &mo, &sl, <ALL_KEYS>) // Rafael Romão's sticky layer
     #define MO_SL(layer) &mo_sl layer layer
 
     TAP_DANCE(blt_dance, 150, <&kp Z>, <&lt BLT Z>)
+
 
     //NOTE: MAGIC SHIFT
     STICKY_KEY(sk_quick, &kp, 1000, quick-release;)
