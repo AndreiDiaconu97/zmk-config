@@ -78,6 +78,7 @@
 
 #include "behaviors.h"
 #include "../features/behaviors.dtsi"
+#include "../features/adaptive_keys.dtsi"
 // #include "../features/mouse.dtsi"
 #include "../features/combos.dtsi"
 #include "../features/symbols.dtsi"

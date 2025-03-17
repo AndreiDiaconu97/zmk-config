@@ -6,17 +6,17 @@
   ╰───────────╮ TL1 TL0 │ │ TR0 TR1 ╭───────────╯
               ╰─────────╯ ╰─────────╯            */
 
+#define MOD_SFT (MOD_LSFT | MOD_RSFT)
+
 / {
   symbols {
     // INFO: MEANINGFUL SHIFTED SYMBOLS //
-    #define MOD_SFT (MOD_LSFT | MOD_RSFT)
 
     MOD_MORPH(sh_comma,   &kp COMMA,     &kp SEMICOLON, MOD_SFT, 0)
     MOD_MORPH(sh_dot,     &kp DOT,       &kp COLON,     MOD_SFT, 0)
     MOD_MORPH(sh_slash,   &kp SLASH,     &kp BSLH,      MOD_SFT, 0)
 
     MOD_MORPH(sh_bspc,    &kp BACKSPACE, &kp DELETE,    MOD_SFT, 0)
-    //MOD_MORPH(shift_caps, &sk_quick LSHIFT, &caps_word, MOD_SFT, 0)
 
     // INFO: MACRO TAP symbols //
     MACRO(mc_excl,  0, 0, <&kp EXCL>  )

@@ -9,6 +9,7 @@ DEFAULT_ZEPHYR_VERSION="3.5"
 DEFAULT_LOG_DIR="/tmp"
 DEFAULT_HOST_ZMK_DIR="/mnt/storage_ssd/Programming/zmk"
 DEFAULT_HOST_CONFIG_DIR="/mnt/storage_ssd/Programming/zmk_ferris_sweep"
+DEFAULT_EXTRA_MODULES="/mnt/storage_ssd/Programming/zmk_modules/zmk-adaptive-key"
 
 # Initialize configuration with defaults
 ZEPHYR_VERSION=""
@@ -20,12 +21,12 @@ BOARDS=""
 CLEAR_CACHE=""
 SUDO=""
 WEST_OPTS=""
+EXTRA_MODULES=""
 
 # Function to display usage information
 show_usage() {
   cat <<EOF
 Usage: $(basename "$0") [OPTIONS]
-
 Build ZMK firmware for specified keyboards.
 
 Options:
@@ -40,8 +41,8 @@ Options:
   --log-dir DIR          Directory to save build logs (default: $DEFAULT_LOG_DIR)
   --host-config-dir DIR  Local ZMK config directory (default: $DEFAULT_HOST_CONFIG_DIR)
   --host-zmk-dir DIR     Local ZMK source directory (default: $DEFAULT_HOST_ZMK_DIR)
+  --extra-modules PATHS  Semicolon-separated paths to external ZMK modules
   --                     Pass remaining options directly to west build
-
 EOF
   exit 1
 }
@@ -79,6 +80,10 @@ parse_arguments() {
       HOST_ZMK_DIR="$2"
       shift
       ;;
+    --extra-modules)
+      EXTRA_MODULES="$2"
+      shift
+      ;;
     -h | --help)
       show_usage
       ;;
@@ -103,6 +108,7 @@ apply_defaults() {
   [[ -z $HOST_ZMK_DIR ]] && HOST_ZMK_DIR="$DEFAULT_HOST_ZMK_DIR"
   [[ -z $HOST_CONFIG_DIR ]] && HOST_CONFIG_DIR="$DEFAULT_HOST_CONFIG_DIR"
   [[ -z $CLEAR_CACHE ]] && CLEAR_CACHE="false"
+  [[ -z $EXTRA_MODULES ]] && EXTRA_MODULES="$DEFAULT_EXTRA_MODULES"
 
   # Auto-detect boards from build.yaml if not specified
   if [[ -z $BOARDS ]]; then
@@ -117,13 +123,11 @@ apply_defaults() {
 # Update config options based on combo usage
 update_combo_config() {
   local config_dir="$1"
-
   if [[ ! -f "$config_dir/features/combos.dtsi" ]]; then
     return
   fi
 
   echo "Updating combo configuration settings..."
-
   local combo_keys
   combo_keys=$(grep -Eo '[LR][TMBLRH][01234PRMICLR]' "$config_dir/features/combos.dtsi" | sort | uniq)
 
@@ -140,7 +144,6 @@ update_combo_config() {
       sort | uniq -c | sort -nr |
       awk 'NR==1{print $1}'
   )
-
   sed -Ei "/CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY/s/=.+/=$max_combos_per_key/" "$config_dir"/*.conf
   echo "  Setting MAX_COMBOS_PER_KEY to $max_combos_per_key"
 
@@ -151,7 +154,6 @@ update_combo_config() {
       cut -d : -f 1 | uniq -c | sort -nr |
       awk 'NR==1{print $1}'
   )
-
   sed -Ei "/CONFIG_ZMK_COMBO_MAX_KEYS_PER_COMBO/s/=.+/=$max_keys_per_combo/" "$config_dir"/*.conf
   echo "  Setting MAX_KEYS_PER_COMBO to $max_keys_per_combo"
 }
@@ -163,6 +165,34 @@ setup_docker() {
   DOCKER_ZMK_DIR="/workspace/zmk"
   DOCKER_CONFIG_DIR="/workspace/zmk-config"
 
+  # Handle external modules in Docker
+  DOCKER_MODULES_MOUNTS=""
+  DOCKER_MODULES_PATHS=""
+
+  if [[ -n "$EXTRA_MODULES" ]]; then
+    local counter=1
+    IFS=';' read -ra MODULE_PATHS <<<"$EXTRA_MODULES"
+
+    for module_path in "${MODULE_PATHS[@]}"; do
+      # Trim whitespace
+      module_path=$(echo "$module_path" | xargs)
+
+      if [[ -n "$module_path" ]]; then
+        local module_name=$(basename "$module_path")
+        local docker_module_path="/workspace/modules/$module_name"
+
+        # Add mount for this module
+        DOCKER_MODULES_MOUNTS+=" --mount type=bind,source=$module_path,target=$docker_module_path"
+
+        # Add path to the Docker modules list
+        [[ -n "$DOCKER_MODULES_PATHS" ]] && DOCKER_MODULES_PATHS+=';'
+        DOCKER_MODULES_PATHS+="$docker_module_path"
+
+        counter=$((counter + 1))
+      fi
+    done
+  fi
+
   # Create Docker run command with all mounts (binds + volumes for cache)
   DOCKER_CMD="$SUDO docker run --name zmk-$ZEPHYR_VERSION --rm \
         --mount type=bind,source=$HOST_ZMK_DIR,target=$DOCKER_ZMK_DIR \
@@ -170,7 +200,8 @@ setup_docker() {
         --mount type=volume,source=zmk-root-user-$ZEPHYR_VERSION,target=/root \
         --mount type=volume,source=zmk-zephyr-$ZEPHYR_VERSION,target=$DOCKER_ZMK_DIR/zephyr \
         --mount type=volume,source=zmk-zephyr-modules-$ZEPHYR_VERSION,target=$DOCKER_ZMK_DIR/modules \
-        --mount type=volume,source=zmk-zephyr-tools-$ZEPHYR_VERSION,target=$DOCKER_ZMK_DIR/tools"
+        --mount type=volume,source=zmk-zephyr-tools-$ZEPHYR_VERSION,target=$DOCKER_ZMK_DIR/tools \
+        $DOCKER_MODULES_MOUNTS"
 
   # Reset Docker volumes if cache clearing is requested
   if [[ $CLEAR_CACHE = true ]]; then
@@ -201,6 +232,11 @@ setup_docker() {
   DOCKER_PREFIX="$DOCKER_CMD -w $DOCKER_ZMK_DIR/app $DOCKER_IMG"
   BUILD_SUFFIX="${ZEPHYR_VERSION}_docker"
   CONFIG_DIR="$DOCKER_CONFIG_DIR/config"
+
+  # Update EXTRA_MODULES to use Docker paths
+  if [[ -n "$DOCKER_MODULES_PATHS" ]]; then
+    EXTRA_MODULES="$DOCKER_MODULES_PATHS"
+  fi
 }
 
 # Setup for local build environment
@@ -217,10 +253,18 @@ compile_board() {
   local shield="$2"
   local build_dir="${board}_${shield}_$BUILD_SUFFIX"
   local logfile="$LOG_DIR/zmk_build_${board}_${shield}.log"
-  local build_cmd="$DOCKER_PREFIX west build -d \"build/$build_dir\" -b \"$board\" $WEST_OPTS -- -DSHIELD=\"${shield}\" -DZMK_CONFIG=\"$CONFIG_DIR\" -Wno-dev"
+
+  # Prepare build command with extra modules if provided
+  local modules_cmd=""
+  if [[ -n "$EXTRA_MODULES" ]]; then
+    modules_cmd="-DZMK_EXTRA_MODULES=\"$EXTRA_MODULES\""
+  fi
+
+  local build_cmd="$DOCKER_PREFIX west build -d \"build/$build_dir\" -b \"$board\" $WEST_OPTS -- -DSHIELD=\"${shield}\" -DZMK_CONFIG=\"$CONFIG_DIR\" $modules_cmd -Wno-dev"
 
   echo -e "\n\033[0;32mBuilding $board:$shield... \033[0m"
   echo "Executing: $build_cmd"
+
   eval $build_cmd >"$logfile" 2>&1
 
   if [[ $? -eq 0 ]]; then
@@ -273,6 +317,12 @@ main() {
   cd "$HOST_ZMK_DIR/app"
   echo "----------------"
   echo "CONFIG_DIR: $CONFIG_DIR"
+
+  # Display extra modules if any
+  if [[ -n "$EXTRA_MODULES" ]]; then
+    echo "Using extra modules: $EXTRA_MODULES"
+  fi
+
   echo "Building firmware for board:shield pairs: $(echo $BOARDS | tr '\n' ' ')"
 
   # Split entries on newlines, spaces, commas, or tabs
@@ -283,6 +333,7 @@ main() {
 
     IFS=':' read -r board shield <<<"$entry"
     shield=${shield:-$board} # Default shield to board if not specified
+
     compile_board "$board" "$shield"
   done
 
