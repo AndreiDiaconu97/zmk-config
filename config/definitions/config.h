@@ -62,6 +62,7 @@
 #define FUNCT 4
 #define BLT 5
 #define GAME 6
+#define MACRO_LAYER 7
 //#define MOUSE 6
 
 #define TYPING COLEMAK QWERTY
@@ -85,3 +86,5 @@
 #include "../features/macros.dtsi"
 // #include "../features/leader.dtsi"
 #include "keymap.dtsi"
+
+#include "../features/secrets.dtsi"
