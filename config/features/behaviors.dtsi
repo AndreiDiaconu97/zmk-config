@@ -26,7 +26,8 @@
     HOLD_TAP(mo_sl, "tap-preferred", 180, 200, (-1), &mo, &sl, <ALL_KEYS>) // Rafael Romão's sticky layer
     #define MO_SL(layer) &mo_sl layer layer
 
-    TAP_DANCE(blt_dance, 150, <&kp Z>, <&lt BLT Z>)
+    HOLD_TAP(mo_bl, "balanced", 180, (-1), 150, &mo, &kp, <ALL_KEYS>)
+    TAP_DANCE(blt_dance, 150, <&mo_bl MACRO_LAYER Z>, <&lt BLT Z>)
 
 
     //NOTE: MAGIC SHIFT

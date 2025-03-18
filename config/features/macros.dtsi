@@ -10,7 +10,7 @@
 
 / {
 	macros {
-		MACRO(mc_ciao, 10, 10, <&kp C &kp I &kp A &kp O>)
+	// MACRO(mc_ciao, 10, 10, <&kp C &kp I &kp A &kp O>)
   // MACRO(leader2, 10, 10, <&macro_press &mo NUM &macro_tap &leader &macro_release &mo NUM>)
   // MACRO(leader3, 10, 10, <&macro_press &mo NAV &macro_tap &leader &macro_release &mo NAV>)
 	};
