@@ -22,14 +22,14 @@
     compatible = "zmk,combos";
 
     // NOTE: LAYERS //
-    COMBO(funct_on,  &tog FUNCT,              LM2 LB1,         TYPING, 20, 75)
-    COMBO(game_on,   &tog GAME,               LT2 LM1,         TYPING, 20, 75)
-    //COMBO(mouse_on,  &tog MOUSE,              LM1 LB0,         TYPING, 20, 75)
+    COMBO(funct_on,  &tog L_FN,               LM2 LB1,         TYPING, 20, 75)
+    COMBO(game_on,   &tog L_GAME,             LT2 LM1,         TYPING, 20, 75)
+    //COMBO(mouse_on,  &tog L_MOUSE,            LM1 LB0,         TYPING, 20, 75)
 
     COMBO(base_none, &none,                   LM2 LB3,         TYPING, 20, 75)
-    COMBO(funct_off, &tog FUNCT,              LM2 LB3,         FUNCT,  20, 75)
-    COMBO(game_off,  &tog GAME,               LM2 LB3,         GAME,   20, 75)
-    //COMBO(mouse_off, &tog MOUSE,              LM2 LB3,         MOUSE,  20, 75)
+    COMBO(funct_off, &tog L_FN,               LM2 LB3,         L_FN,   20, 75)
+    COMBO(game_off,  &tog L_GAME,             LM2 LB3,         L_GAME,   20, 75)
+    //COMBO(mouse_off, &tog L_MOUSE,            LM2 LB3,         MOUSE,  20, 75)
 
 
     // NOTE: KEYS //
@@ -52,8 +52,8 @@
     COMBO(lbkt,      &kp LBKT,                RB1 RB2,         TYPING, 20, 75)
     COMBO(rbkt,      &kp RBKT,                RB2 RB3,         TYPING, 20, 75)
 
-    COMBO(game_esc,  &kp ESC,                 LM3 LM2 TL1,     GAME,   20, 75)
-    COMBO(game_enter,&kp ESC,                 LM2 LM1 TL1,     GAME,   20, 75)
+    COMBO(game_esc,  &kp ESC,                 LM3 LM2 TL1,     L_GAME, 20, 75)
+    COMBO(game_enter,&kp ESC,                 LM2 LM1 TL1,     L_GAME, 20, 75)
   };
 };
 

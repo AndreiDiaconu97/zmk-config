@@ -55,17 +55,17 @@
 #define ALL_KEYS KEYS_L KEYS_R THUMBS
 
 // Layers
-#define COLEMAK 0
-#define QWERTY 1
-#define SYM_NUM 2
-#define NAV 3
-#define FUNCT 4
-#define BLT 5
-#define GAME 6
-#define MACRO_LAYER 7
-//#define MOUSE 6
+#define L_COLEMAK 0
+#define L_QWERTY 1
+#define L_SYM_NUM 2
+#define L_NAV 3
+#define L_FN 4
+#define L_MEDIA 5
+#define L_GAME 6
+#define L_MACRO 7
+//#define L_MOUSE 8
 
-#define TYPING COLEMAK QWERTY
+#define TYPING L_COLEMAK L_QWERTY
 #define ALL 0xff
 
 // Keys
