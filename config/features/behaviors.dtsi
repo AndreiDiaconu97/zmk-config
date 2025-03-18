@@ -26,8 +26,8 @@
     HOLD_TAP(mo_sl, "tap-preferred", 180, 200, (-1), &mo, &sl, <ALL_KEYS>) // Rafael Romão's sticky layer
     #define MO_SL(layer) &mo_sl layer layer
 
-    HOLD_TAP(mo_bl, "balanced", 180, (-1), 150, &mo, &kp, <ALL_KEYS>)
-    TAP_DANCE(blt_dance, 150, <&mo_bl MACRO_LAYER Z>, <&lt BLT Z>)
+    HOLD_TAP(mo_bal, "balanced", 180, (-1), 150, &mo, &kp, <ALL_KEYS>)
+    #define MO_MACRO(key) &mo_bal L_MACRO key
 
 
     //NOTE: MAGIC SHIFT
@@ -40,8 +40,8 @@
   // conditional_layers {
   //   compatible = "zmk,conditional-layers";
   //   tri_layer {
-  //     if-layers = <NAV SYM_NUM>;
-  //     then-layer = <FUNCT>;
+  //     if-layers = <L_NAV L_SYM_NUM>;
+  //     then-layer = <L_FN>;
   //   };
   // };
 };

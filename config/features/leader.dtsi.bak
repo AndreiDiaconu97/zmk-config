@@ -21,6 +21,6 @@
 	leader_sequences {
 		compatible = "zmk,leader-sequences";
 
-		LEADER(ld_ciao, RHC RHM, &mc_ciao, NAV)
+		//LEADER(ld_ciao, RHC RHM, &mc_ciao, L_NAV)
 	};
 };
