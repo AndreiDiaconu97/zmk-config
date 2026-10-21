@@ -5,7 +5,7 @@
 # Automates building ZMK firmware for keyboards with Docker or local environments
 
 # Default configuration
-DEFAULT_ZEPHYR_VERSION="3.5"
+DEFAULT_ZEPHYR_VERSION="4.1-branch"
 DEFAULT_LOG_DIR="/tmp"
 DEFAULT_HOST_ZMK_DIR="/mnt/storage_ssd/dev/keyboard/zmk"
 DEFAULT_HOST_CONFIG_DIR="/mnt/storage_ssd/dev/keyboard/zmk_ferris_sweep"
@@ -251,8 +251,9 @@ setup_local() {
 compile_board() {
   local board="$1"
   local shield="$2"
-  local build_dir="${board}_${shield}_$BUILD_SUFFIX"
-  local logfile="$LOG_DIR/zmk_build_${board}_${shield}.log"
+  local board_name="${board%%[@/]*}" # "nice_nano//zmk" -> "nice_nano", safe for file names
+  local build_dir="${board_name}_${shield}_$BUILD_SUFFIX"
+  local logfile="$LOG_DIR/zmk_build_${board_name}_${shield}.log"
 
   # Prepare build command with extra modules if provided
   local modules_cmd=""
@@ -278,7 +279,7 @@ compile_board() {
       TYPE="bin"
     fi
 
-    OUTPUT="$HOST_CONFIG_DIR/build/${board}_${shield}-zmk.$TYPE"
+    OUTPUT="$HOST_CONFIG_DIR/build/${board_name}_${shield}-zmk.$TYPE"
     mkdir -p "$(dirname "$OUTPUT")"
 
     # Backup existing file if it's not a symlink
