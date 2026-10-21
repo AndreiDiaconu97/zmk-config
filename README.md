@@ -1,12 +1,13 @@
 # zmk-config
 
-Diagram auto-generated with: https://github.com/caksoylar/keymap-drawer
+![keymap](docs/keymap.svg)
 
-![my_keymap(4)](https://user-images.githubusercontent.com/28645381/230996226-c7cbf84d-432e-4702-84ad-1d3873b66430.svg)
+Diagram generated from the sources by `python3 scripts/draw_keymap.py` (stdlib only; it parses
+`config/definitions/keymap.dtsi` and `config/features/combos.dtsi`). Re-run it after changing the keymap.
 
 ## Building
 
-`./scripts/build.sh -h`
+`./scripts/build.sh -h` (Docker, ZMK `main` on Zephyr 4.1; board is `nice_nano//zmk`)
 
 ## Flashing
 
