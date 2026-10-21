@@ -120,44 +120,6 @@ apply_defaults() {
   fi
 }
 
-# Update config options based on combo usage
-update_combo_config() {
-  local config_dir="$1"
-  if [[ ! -f "$config_dir/features/combos.dtsi" ]]; then
-    return
-  fi
-
-  echo "Updating combo configuration settings..."
-  local combo_keys
-  combo_keys=$(grep -Eo '[LR][TMBLRH][01234PRMICLR]' "$config_dir/features/combos.dtsi" | sort | uniq)
-
-  # Exit if no combos are detected
-  if [[ -z "$combo_keys" ]]; then
-    echo "  No combos detected. Skipping update."
-    return
-  fi
-
-  # Update maximum combos per key
-  local max_combos_per_key=$(
-    tail -n +1 "$config_dir/features/combos.dtsi" |
-      grep -Eo '[LR][TMBLRH][01234PRMICLR]' |
-      sort | uniq -c | sort -nr |
-      awk 'NR==1{print $1}'
-  )
-  sed -Ei "/CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY/s/=.+/=$max_combos_per_key/" "$config_dir"/*.conf
-  echo "  Setting MAX_COMBOS_PER_KEY to $max_combos_per_key"
-
-  # Update maximum keys per combo
-  local max_keys_per_combo=$(
-    tail -n +1 "$config_dir/features/combos.dtsi" |
-      grep -o -n '[LR][TMBLRH][01234PRMICLR]' |
-      cut -d : -f 1 | uniq -c | sort -nr |
-      awk 'NR==1{print $1}'
-  )
-  sed -Ei "/CONFIG_ZMK_COMBO_MAX_KEYS_PER_COMBO/s/=.+/=$max_keys_per_combo/" "$config_dir"/*.conf
-  echo "  Setting MAX_KEYS_PER_COMBO to $max_keys_per_combo"
-}
-
 # Setup Docker environment and create Docker command
 setup_docker() {
   echo "Build mode: docker"
@@ -303,9 +265,7 @@ main() {
   echo "ZMK Build Script"
   echo "----------------"
 
-  # Update configuration based on combo usage
   cd "$HOST_CONFIG_DIR"
-  update_combo_config "$HOST_CONFIG_DIR/config"
 
   # Set up build environment (Docker or local)
   if [[ $RUNWITH_DOCKER = true ]]; then
