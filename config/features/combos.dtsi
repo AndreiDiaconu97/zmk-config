@@ -53,7 +53,7 @@
     COMBO(rbkt,      &kp RBKT,                RB2 RB3,         TYPING, 20, 75)
 
     COMBO(game_esc,  &kp ESC,                 LM3 LM2 TL1,     L_GAME, 20, 75)
-    COMBO(game_enter,&kp ESC,                 LM2 LM1 TL1,     L_GAME, 20, 75)
+    COMBO(game_enter,&kp RETURN,                LM2 LM1 TL1,     L_GAME, 20, 75)
   };
 };
 

@@ -1,4 +1,4 @@
 .vscode
-build/*.bak
+build/
 *secret*
 .aider*

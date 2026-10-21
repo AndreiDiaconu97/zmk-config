@@ -7,9 +7,9 @@
 # Default configuration
 DEFAULT_ZEPHYR_VERSION="3.5"
 DEFAULT_LOG_DIR="/tmp"
-DEFAULT_HOST_ZMK_DIR="/mnt/storage_ssd/Programming/zmk"
-DEFAULT_HOST_CONFIG_DIR="/mnt/storage_ssd/Programming/zmk_ferris_sweep"
-DEFAULT_EXTRA_MODULES="/mnt/storage_ssd/Programming/zmk_modules/zmk-adaptive-key"
+DEFAULT_HOST_ZMK_DIR="/mnt/storage_ssd/dev/keyboard/zmk"
+DEFAULT_HOST_CONFIG_DIR="/mnt/storage_ssd/dev/keyboard/zmk_ferris_sweep"
+DEFAULT_EXTRA_MODULES=""
 
 # Initialize configuration with defaults
 ZEPHYR_VERSION=""
